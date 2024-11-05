@@ -4,6 +4,14 @@
     <!-- Title for Active Auctions Section -->
     <h2 class="text-center">Active Auctions</h2>
 
+    <!-- Categories Buttons -->
+    <div class="text-center mb-4">
+        <a href="{% url 'active_listings' %}" class="btn btn-secondary">All Categories</a>
+        {% for category in categories %}
+            <a href="{% url 'active_listings_by_category' category.name %}" class="btn btn-secondary">{{ category.name }}</a>
+        {% endfor %}
+    </div>
+
     <div class="container-fluid">
         <div class="row">
             {% if listings %}
@@ -25,7 +33,11 @@
             {% else %}
                 <!-- Message when there are no active auctions -->
                 <div class="col-12">
-                    <p>There are no active auctions at the moment.</p>
+                    {% if selected_category %}
+                        <p>No active auctions available in the selected category: <strong>{{ selected_category }}</strong>.</p>
+                    {% else %}
+                        <p>There are no active auctions at the moment.</p>
+                    {% endif %}
                 </div>
             {% endif %}
         </div>

@@ -1,5 +1,5 @@
 from django import forms
-from .models import AuctionListing, Bid, Comment
+from .models import AuctionListing, Bid, Comment, Category
 
 # Form for creating a new auction listing
 class AuctionListingForm(forms.ModelForm):

@@ -5,25 +5,26 @@ from django.contrib.auth.models import AbstractUser
 class User(AbstractUser):
     pass  # Additional fields can be added here in the future.
 
+# Model for categories
+class Category(models.Model):
+    name = models.CharField(max_length=20, unique=True)
+
+    def __str__(self):
+        return self.name
+
 # Model for auction listings
 class AuctionListing(models.Model):
-    CATEGORIES = [  # Category choices for auction listings
-        ('fashion', 'Fashion'),  # 'fashion' is the key, 'Fashion' is the display label
-        ('toys', 'Toys'),
-        ('electronics', 'Electronics'),
-        ('home', 'Home'),
-    ]
-    
     title = models.CharField(max_length=100)  # Title of the auction listing
     description = models.TextField()  # Description of the auction listing
     starting_bid = models.DecimalField(max_digits=10, decimal_places=2)  # Starting bid amount
     current_bid = models.DecimalField(max_digits=10, decimal_places=2, null=True, blank=True)  # Current bid amount (optional)
     image = models.ImageField(upload_to='images/', blank=True, null=True)  # Image for the listing (optional)
-    category = models.CharField(max_length=20, choices=CATEGORIES, blank=True, null=True)  # Category of the listing (optional)
+    category = models.ForeignKey(Category, on_delete=models.CASCADE, null=True, blank=True)  # Category of the listing (optional)
     active = models.BooleanField(default=True)  # Indicates if the listing is active
     owner = models.ForeignKey(User, on_delete=models.CASCADE, related_name="listings")  # Owner of the listing
     created_at = models.DateTimeField(auto_now_add=True)  # Timestamp for when the listing was created
     watchers = models.ManyToManyField(User, related_name="watchlist", blank=True)  # Users who are watching this listing
+    winner = models.ForeignKey(User, null=True, blank=True, on_delete=models.SET_NULL, related_name='won_auctions')  # User who won the auction
 
     def __str__(self):
         return self.title  # String representation of the object (the title of the listing)

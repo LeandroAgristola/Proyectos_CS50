@@ -1,5 +1,1 @@
-Muestra cómo el creador del listado puede cerrar la subasta si es el dueño, y cómo el sistema muestra al ganador de la subasta en la página si ha ganado.
-Muestra la página de categorías, donde los usuarios pueden ver todas las categorías de anuncios disponibles.
-Muestra cómo, al hacer clic en una categoría específica, se abre una página con todos los anuncios activos de esa categoría.
-Interfaz de Administración de Django Muestra la interfaz de administración de Django.
-Muestra cómo un administrador puede ver, agregar, editar y eliminar cualquier listado, comentario y oferta realizada en el sitio.
+El creador de las subasta no puede ver las subastas que creo
