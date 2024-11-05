@@ -18,7 +18,7 @@ class AuctionListing(models.Model):
     description = models.TextField()  # Description of the auction listing
     starting_bid = models.DecimalField(max_digits=10, decimal_places=2)  # Starting bid amount
     current_bid = models.DecimalField(max_digits=10, decimal_places=2, null=True, blank=True)  # Current bid amount (optional)
-    image = models.ImageField(upload_to='images/', blank=True, null=True)  # Image for the listing (optional)
+    image = models.ImageField(upload_to='listings/', blank=False, null=False)
     category = models.ForeignKey(Category, on_delete=models.CASCADE, null=True, blank=True)  # Category of the listing (optional)
     active = models.BooleanField(default=True)  # Indicates if the listing is active
     owner = models.ForeignKey(User, on_delete=models.CASCADE, related_name="listings")  # Owner of the listing
