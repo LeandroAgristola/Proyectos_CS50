@@ -1,98 +1,129 @@
 document.addEventListener('DOMContentLoaded', function() {
 
-  // Use buttons to toggle between views
+  // Configurar eventos para las vistas
   document.querySelector('#inbox').addEventListener('click', () => load_mailbox('inbox'));
   document.querySelector('#sent').addEventListener('click', () => load_mailbox('sent'));
   document.querySelector('#archived').addEventListener('click', () => load_mailbox('archive'));
   document.querySelector('#compose').addEventListener('click', compose_email);
 
-  // By default, load the inbox
+  // Cargar la bandeja de entrada por defecto
   load_mailbox('inbox');
 });
 
 function compose_email() {
-
-  // Show compose view and hide other views
   document.querySelector('#emails-view').style.display = 'none';
   document.querySelector('#compose-view').style.display = 'block';
 
-  // Clear out composition fields
+  // Limpiar campos
   document.querySelector('#compose-recipients').value = '';
   document.querySelector('#compose-subject').value = '';
   document.querySelector('#compose-body').value = '';
+
+  // Enviar formulario
+  document.querySelector('#compose-form').onsubmit = function(event) {
+    event.preventDefault();
+
+    const recipients = document.querySelector('#compose-recipients').value;
+    const subject = document.querySelector('#compose-subject').value;
+    const body = document.querySelector('#compose-body').value;
+
+    // Realizar POST
+    fetch('/emails', {
+      method: 'POST',
+      body: JSON.stringify({
+        recipients: recipients,
+        subject: subject,
+        body: body
+      }),
+      headers: {
+        "Content-Type": "application/json"
+      }
+    })
+    .then(response => response.json())
+    .then(result => {
+      if (result.message === "Email sent successfully.") {
+        // Notificación de éxito y redirigir a "Sent"
+        alert("Email enviado con éxito.");
+        load_mailbox('sent');
+      } else {
+        // Notificación de error
+        alert("Error al enviar el email: " + result.error);
+      }
+    })
+    .catch(error => console.error("Error:", error));
+  };
 }
 
 function load_mailbox(mailbox) {
-  
-  // Show the mailbox and hide other views
+  // Mostrar la vista de correos y ocultar la vista de composición
   document.querySelector('#emails-view').style.display = 'block';
   document.querySelector('#compose-view').style.display = 'none';
 
-  // Show the mailbox name
-  document.querySelector('#emails-view').innerHTML = `<h3>${mailbox.charAt(0).toUpperCase() + mailbox.slice(1)}</h3>`;
+  // Configurar el título de la vista
+  document.querySelector('#emails-view').innerHTML = `
+    <h3>${mailbox.charAt(0).toUpperCase() + mailbox.slice(1)}</h3>
+    <div id="emails-list"></div> <!-- Asegura que el contenedor emails-list esté presente -->
+  `;
 
-  // Fetch emails for the specified mailbox
+  // Realizar la solicitud GET a la bandeja correspondiente
   fetch(`/emails/${mailbox}`)
     .then(response => response.json())
     .then(emails => {
-      // Clear out any existing content in the emails view
-      document.querySelector('#emails-view').innerHTML = `<h3>${mailbox.charAt(0).toUpperCase() + mailbox.slice(1)}</h3>`;
-      
-      // Iterate through each email and create a display for it
-      emails.forEach(email => {
-        const email_div = document.createElement('div');
-        email_div.classList.add('email-item');
+      const emailsList = document.querySelector('#emails-list'); // Seleccionar emails-list
+      emailsList.innerHTML = ''; // Limpiar lista
 
-        // Add email details to the div
-        email_div.innerHTML = `
-          <div><strong>De:</strong> ${email.sender}</div>
-          <div><strong>Asunto:</strong> ${email.subject}</div>
-          <div><strong>Fecha:</strong> ${email.timestamp}</div>
+      emails.forEach(email => {
+        // Crear el elemento HTML para cada correo
+        const emailItem = document.createElement('div');
+        emailItem.className = 'email-item';
+
+        // Si el correo está leído, agregar la clase 'read', si no, 'unread'
+        if (email.read) {
+          emailItem.classList.add('read');
+        } else {
+          emailItem.classList.add('unread');
+        }
+
+        emailItem.innerHTML = `
+          <strong>${email.sender}</strong> - ${email.subject} 
+          <span class="timestamp">${email.timestamp}</span>
         `;
 
-        // Change background color if the email is read
-        email_div.style.backgroundColor = email.read ? '#f0f0f0' : '#ffffff';
-
-        // Add event listener to open email when clicked
-        email_div.addEventListener('click', () => open_email(email.id));
-
-        // Style for better display
-        email_div.style.borderBottom = '1px solid #ddd';
-        email_div.style.padding = '10px';
-        email_div.style.cursor = 'pointer';
-        
-        // Add this email's div to the emails view
-        document.querySelector('#emails-view').append(email_div);
+        emailItem.addEventListener('click', () => view_email(email.id));
+        emailsList.append(emailItem);
       });
     })
-    .catch(error => console.log("Error al cargar correos:", error));
+    .catch(error => console.error('Error:', error));
 }
 
-// Function to open and display the content of a single email
-function open_email(email_id) {
+function view_email(email_id) {
+  // Hide other views and show the email detail view
+  document.querySelector('#emails-view').style.display = 'none';
+  document.querySelector('#compose-view').style.display = 'none';
+  document.querySelector('#email-detail-view').style.display = 'block';
 
   // Fetch the email details
   fetch(`/emails/${email_id}`)
-    .then(response => response.json())
-    .then(email => {
+      .then(response => response.json())
+      .then(email => {
+          // Display email contents
+          document.querySelector('#email-detail-view').innerHTML = `
+              <h3>${email.subject}</h3>
+              <p><strong>From:</strong> ${email.sender}</p>
+              <p><strong>To:</strong> ${email.recipients.join(', ')}</p>
+              <p><strong>Timestamp:</strong> ${email.timestamp}</p>
+              <hr>
+              <p>${email.body}</p>
+          `;
 
-      // Clear out the emails view and show email content
-      document.querySelector('#emails-view').innerHTML = `
-        <div><strong>De:</strong> ${email.sender}</div>
-        <div><strong>Para:</strong> ${email.recipients}</div>
-        <div><strong>Asunto:</strong> ${email.subject}</div>
-        <div><strong>Fecha:</strong> ${email.timestamp}</div>
-        <hr>
-        <div>${email.body}</div>
-      `;
-
-      // Mark email as read if it's not already
-      if (!email.read) {
-        fetch(`/emails/${email_id}`, {
-          method: 'PUT',
-          body: JSON.stringify({ read: true })
-        });
-      }
-    })
-    .catch(error => console.log("Error al abrir el correo:", error));
+          // Mark email as read
+          if (!email.read) {
+              fetch(`/emails/${email_id}`, {
+                  method: 'PUT',
+                  body: JSON.stringify({ read: true }),
+                  headers: { "Content-Type": "application/json" }
+              });
+          }
+      })
+      .catch(error => console.error('Error:', error));
 }

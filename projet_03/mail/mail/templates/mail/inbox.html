@@ -5,10 +5,10 @@
     <h2>{{ request.user.email }}</h2>
 
     <!-- Botones de navegación -->
-    <button class="btn btn-sm btn-outline-primary" id="inbox">Inbox</button>
-    <button class="btn btn-sm btn-outline-primary" id="compose">Compose</button>
-    <button class="btn btn-sm btn-outline-primary" id="sent">Sent</button>
-    <button class="btn btn-sm btn-outline-primary" id="archived">Archived</button>
+    <a class="btn btn-sm btn-outline-primary" href="#" id="inbox">Inbox</a>
+    <a class="btn btn-sm btn-outline-primary" href="#" id="compose">Compose</a>
+    <a class="btn btn-sm btn-outline-primary" href="#" id="sent">Sent</a>
+    <a class="btn btn-sm btn-outline-primary" href="#" id="archived">Archived</a>
     <a class="btn btn-sm btn-outline-primary" href="{% url 'logout' %}">Log Out</a>
     <hr>
 
@@ -16,6 +16,10 @@
     <div id="emails-view" style="display: none;">
         <!-- Aquí se mostrarán los correos -->
     </div>
+
+    <div id="emails-view"></div>
+    <div id="compose-view" style="display: none;"></div>
+    <div id="email-detail-view" style="display: none;"></div>
 
     <div id="compose-view" style="display: none;">
         <h3>New Email</h3>

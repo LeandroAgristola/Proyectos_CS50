@@ -1,6 +1,15 @@
 Funcionalidad:
-marca como leido o no leido con una tilde estilo gmail
-boton encima del navbar para Redactar msj
+*Navegar correctamente con los link de la barra de navegación
+*Ver buzon de enviados
+*Poder enviar el correo 
+*Al hacer click sobre un correo electronico, debemos abrir ese correo en un ventana nueva
+*instalar dependencias
+
+Ver buzon de archivados
+agregar boton en el mail de responder o reenviar, archivar o borrar
+Permita a los usuarios responder a un correo electrónico
+Permita a los usuarios archivar y desarchivar correos electrónicos recibidos No enviados
+Boton encima del navbar para Redactar msj
 Agregar campos al registro Nombre, apellido, foto de perfil
 Mostrar nombre en vez de correo
 Agregar boton de engranaje para ver los datos de la cuenta
@@ -8,16 +17,14 @@ En el menu de datos de la cuenta permitir editar todos los campos menos la direc
 Agregar funcionalidad para eliminar cuenta
 Desde la ventana de administracion se deben poder eliminar todo la informacion
 Permitir eliminar mail de cualquier casilla
-agregar boton en el mail de responder o reenviar, archivar o borrar
-instalar dependencias
 Agregar carpeta vendor con archivos de bootstrap
 cambiar link de archivos de estilo
 
 Diseño:
+*Si el correo electrónico no se lee, debe aparecer con un fondo blanco. Si el correo electrónico ha sido leído, debe aparecer con un fondo gris.
 
 Agregar facvicon
 Agregar logo
-Cambiar sombreado cuando esta leido o no leido
 colocar botones de forma vertical
 logo de mail arriba
 al lado del logo el buscador
@@ -25,23 +32,6 @@ al lado del logo el buscador
 
 Especificación Instructor
 
-Utilizando JavaScript, HTML y CSS, completan la implementación de su cliente de correo electrónico de una sola página dentro de inbox.js(y no adicionales o otros archivos; para propósitos de clasificación, sólo vamos a considerar inbox.js-). Debe cumplir con los siguientes requisitos:
-
-    Enviar Mail: Cuando un usuario envíe el formulario de composición de correo electrónico, agregue el código JavaScript para enviar el correo electrónico.
-        Probablemente querrás hacer unPOSTSolicitud de/emails, pasando en valores pararecipients,subject, ybody.
-        Una vez enviado el correo electrónico, cargue el buzón enviado por el usuario.
-    Mailbox: Cuando un usuario visite su bandeja de entrada, buzón enviado o Archive, cargue el buzón apropiado.
-        Probablemente querrás hacer unGETSolicitud de/emails/<mailbox>para solicitar los correos electrónicos de un buzón en particular.
-        Cuando se visita un buzón, la aplicación debe consultar primero la API para los últimos correos electrónicos en ese buzón.
-        Cuando se visita un buzón, el nombre del buzón debe aparecer en la parte superior de la página (esta parte está hecha para usted).
-        Cada correo electrónico debe ser renderdo en su propia caja (por ejemplo, como<div>con un borde) que muestra de quién es el correo electrónico, cuál es la línea de asunto y la marca de tiempo del correo electrónico.
-        Si el correo electrónico no se lee, debe aparecer con un fondo blanco. Si el correo electrónico ha sido leído, debe aparecer con un fondo gris.
-    Ver Email: Cuando un usuario hace clic en un correo electrónico, el usuario debe ser llevado a una vista donde vea el contenido de ese correo electrónico.
-        Probablemente querrás hacer unGETSolicitud de/emails/<email_id>para solicitar el correo electrónico.
-        Su solicitud debe mostrar el remitente, destinatarios, temas, marca de tiempo y cuerpo de correos electrónicos.
-        Es probable que desee añadir un adicionaldivainbox.html(además deemails-viewycompose-view) para mostrar el correo electrónico. Asegúrese de actualizar su código para ocultar y mostrar las vistas correctas cuando se haga clic en las opciones de navegación.
-        Vea la pista en la sección Hints sobre cómo agregar un oyente de eventos a un elemento HTML que usted ha añadido al DOM.
-        Una vez que el correo electrónico ha sido hecho clic, usted debe marcar el correo electrónico como leído. Recuerda que puedes enviar unPUTSolicitud de/emails/<email_id>para actualizar si un correo electrónico se lee o no.
     Archivo y Unarchivo: Permita a los usuarios archivar y correos electrónicos poco acavativos que han recibido.
         Al ver un correo electrónico de Inbox, el usuario debe ser presentado con un botón que les permita archivar el correo electrónico. Al ver un correo electrónico de Archivo, el usuario debe ser presentado con un botón que les permita descaba el correo electrónico. Este requisito no se aplica a los correos electrónicos en el buzón de Enviado.
         Recuerda que puedes enviar unPUTSolicitud de/emails/<email_id>para marcar un correo electrónico como archivado o sin acobatar.
@@ -52,3 +42,16 @@ Utilizando JavaScript, HTML y CSS, completan la implementación de su cliente de
         Pre-llene la forma de la composición con elrecipientcampo list para quien haya enviado el correo original.
         Pre-llene elsubjectlínea. Si el correo electrónico original tuviera una línea de asunto defoo, la nueva línea de asunto debe serRe: foo. (Si la línea de asunto ya comienza conRe: , no hay necesidad de añadirlo de nuevo.)
         Pre-llene elbodydel correo electrónico con una línea como"On Jan 1 2020, 12:00 AM foo@example.com wrote:"seguido por el texto original del correo electrónico.
+
+
+Bien continuando con el proyecto de Programación web de CS50 con Python y JavaScript de havard academy, el cual me aporta todos los archivos para iniciar, el instructor me informa esto :
+
+Diseñar un front-end para un cliente de correo electrónico que realice llamadas API para enviar y recibir correos electrónicos.
+
+Vamos a empezar con las funcionalidades , ya que el curso en en ingles te voy a pasar las instrucciones en ingles para que las entiendas mejor asique todo el codigo y comentarios trata de hacerlo en ingles,pero las explicaciones en español por favor
+
+#-----inbox.js:
+
+#-----urls.py:
+
+#-----views.py:
