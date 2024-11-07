@@ -6,9 +6,7 @@ from django.http import JsonResponse
 from django.shortcuts import HttpResponse, HttpResponseRedirect, render
 from django.urls import reverse
 from django.views.decorators.csrf import csrf_exempt
-
 from .models import User, Email
-
 
 def index(request):
 
@@ -85,22 +83,17 @@ def mailbox(request, mailbox):
     emails = emails.order_by("-timestamp").all()
     return JsonResponse([email.serialize() for email in emails], safe=False)
 
-
 @csrf_exempt
 @login_required
 def email(request, email_id):
-
-    # Query for requested email
     try:
         email = Email.objects.get(user=request.user, pk=email_id)
     except Email.DoesNotExist:
         return JsonResponse({"error": "Email not found."}, status=404)
 
-    # Return email contents
     if request.method == "GET":
         return JsonResponse(email.serialize())
 
-    # Update whether email is read or should be archived
     elif request.method == "PUT":
         data = json.loads(request.body)
         if data.get("read") is not None:
@@ -110,12 +103,12 @@ def email(request, email_id):
         email.save()
         return HttpResponse(status=204)
 
-    # Email must be via GET or PUT
-    else:
-        return JsonResponse({
-            "error": "GET or PUT request required."
-        }, status=400)
+    elif request.method == "DELETE":
+        email.delete()
+        return JsonResponse({"message": "Email deleted successfully."}, status=204)
 
+    else:
+        return JsonResponse({"error": "Method not allowed."}, status=400)
 
 def login_view(request):
     if request.method == "POST":

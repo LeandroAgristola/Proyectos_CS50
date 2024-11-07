@@ -4,51 +4,45 @@ Funcionalidad:
 *Poder enviar el correo 
 *Al hacer click sobre un correo electronico, debemos abrir ese correo en un ventana nueva
 *instalar dependencias
+*Permita a los usuarios archivar y desarchivar correos electrónicos recibidos No enviados
+*Ver buzon de archivados
+*Permita a los usuarios responder a un correo electrónico
+*Agregar boton en el mail de responder o reenviar, archivar o borrar
+*En las bandejas el ultimo mail de la lista se muestra desplegado (se ve el contenido) si la bandeja tiene un solo mail se muestra el contenido directamente
+*Permitir eliminar mail de cualquier casilla
+*Desde la ventana de administracion se deben poder eliminar todo la informacion
 
-Ver buzon de archivados
-agregar boton en el mail de responder o reenviar, archivar o borrar
-Permita a los usuarios responder a un correo electrónico
-Permita a los usuarios archivar y desarchivar correos electrónicos recibidos No enviados
-Boton encima del navbar para Redactar msj
+Al colocar contraseña incorrecta genera un error CSRF 
+No permitir ni mostrar el boton de archivar en sent
 Agregar campos al registro Nombre, apellido, foto de perfil
 Mostrar nombre en vez de correo
-Agregar boton de engranaje para ver los datos de la cuenta
+Mostrar boton "mi cuenta" en navbar a la derecha con un menu desplegable
+Menu desplegable debe contener Datos de la cuenta (muestra un nuevo template con los datos de la cuenta), cerrar sesion 
+
 En el menu de datos de la cuenta permitir editar todos los campos menos la direccion de correo
 Agregar funcionalidad para eliminar cuenta
-Desde la ventana de administracion se deben poder eliminar todo la informacion
-Permitir eliminar mail de cualquier casilla
 Agregar carpeta vendor con archivos de bootstrap
-cambiar link de archivos de estilo
+Cambiar link de archivos de estilo
 
 Diseño:
 *Si el correo electrónico no se lee, debe aparecer con un fondo blanco. Si el correo electrónico ha sido leído, debe aparecer con un fondo gris.
 
+Agregar boton de engranaje para ver los datos de la cuenta
 Agregar facvicon
 Agregar logo
+Boton encima del navbar para Redactar msj
 colocar botones de forma vertical
 logo de mail arriba
 al lado del logo el buscador
 
 
-Especificación Instructor
-
-    Archivo y Unarchivo: Permita a los usuarios archivar y correos electrónicos poco acavativos que han recibido.
-        Al ver un correo electrónico de Inbox, el usuario debe ser presentado con un botón que les permita archivar el correo electrónico. Al ver un correo electrónico de Archivo, el usuario debe ser presentado con un botón que les permita descaba el correo electrónico. Este requisito no se aplica a los correos electrónicos en el buzón de Enviado.
-        Recuerda que puedes enviar unPUTSolicitud de/emails/<email_id>para marcar un correo electrónico como archivado o sin acobatar.
-        Una vez que un correo electrónico haya sido archivado o sin archivo, cargue la bandeja de entrada del usuario.
-    Responder: Permita a los usuarios responder a un correo electrónico.
-        Al ver un correo electrónico, el usuario debe ser presentado con un botón de "Responder que les permite responder al correo electrónico".
-        Cuando el usuario hace clic en el botón "Respuesta", debe llevarse al formulario de composición de correo electrónico.
-        Pre-llene la forma de la composición con elrecipientcampo list para quien haya enviado el correo original.
-        Pre-llene elsubjectlínea. Si el correo electrónico original tuviera una línea de asunto defoo, la nueva línea de asunto debe serRe: foo. (Si la línea de asunto ya comienza conRe: , no hay necesidad de añadirlo de nuevo.)
-        Pre-llene elbodydel correo electrónico con una línea como"On Jan 1 2020, 12:00 AM foo@example.com wrote:"seguido por el texto original del correo electrónico.
 
 
 Bien continuando con el proyecto de Programación web de CS50 con Python y JavaScript de havard academy, el cual me aporta todos los archivos para iniciar, el instructor me informa esto :
 
 Diseñar un front-end para un cliente de correo electrónico que realice llamadas API para enviar y recibir correos electrónicos.
 
-Vamos a empezar con las funcionalidades , ya que el curso en en ingles te voy a pasar las instrucciones en ingles para que las entiendas mejor asique todo el codigo y comentarios trata de hacerlo en ingles,pero las explicaciones en español por favor
+Vamos a continuar con las funcionalidades extras
 
 #-----inbox.js:
 

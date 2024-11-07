@@ -11,7 +11,9 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 function compose_email() {
+  // Ocultar vistas innecesarias
   document.querySelector('#emails-view').style.display = 'none';
+  document.querySelector('#email-detail-view').style.display = 'none';
   document.querySelector('#compose-view').style.display = 'block';
 
   // Limpiar campos
@@ -19,7 +21,7 @@ function compose_email() {
   document.querySelector('#compose-subject').value = '';
   document.querySelector('#compose-body').value = '';
 
-  // Enviar formulario
+  // Configurar el envío del formulario
   document.querySelector('#compose-form').onsubmit = function(event) {
     event.preventDefault();
 
@@ -27,26 +29,17 @@ function compose_email() {
     const subject = document.querySelector('#compose-subject').value;
     const body = document.querySelector('#compose-body').value;
 
-    // Realizar POST
     fetch('/emails', {
       method: 'POST',
-      body: JSON.stringify({
-        recipients: recipients,
-        subject: subject,
-        body: body
-      }),
-      headers: {
-        "Content-Type": "application/json"
-      }
+      body: JSON.stringify({ recipients, subject, body }),
+      headers: { "Content-Type": "application/json" }
     })
     .then(response => response.json())
     .then(result => {
       if (result.message === "Email sent successfully.") {
-        // Notificación de éxito y redirigir a "Sent"
         alert("Email enviado con éxito.");
         load_mailbox('sent');
       } else {
-        // Notificación de error
         alert("Error al enviar el email: " + result.error);
       }
     })
@@ -55,29 +48,25 @@ function compose_email() {
 }
 
 function load_mailbox(mailbox) {
-  // Mostrar la vista de correos y ocultar la vista de composición
   document.querySelector('#emails-view').style.display = 'block';
   document.querySelector('#compose-view').style.display = 'none';
+  document.querySelector('#email-detail-view').style.display = 'none';
 
-  // Configurar el título de la vista
   document.querySelector('#emails-view').innerHTML = `
     <h3>${mailbox.charAt(0).toUpperCase() + mailbox.slice(1)}</h3>
-    <div id="emails-list"></div> <!-- Asegura que el contenedor emails-list esté presente -->
+    <div id="emails-list"></div>
   `;
 
-  // Realizar la solicitud GET a la bandeja correspondiente
   fetch(`/emails/${mailbox}`)
     .then(response => response.json())
     .then(emails => {
-      const emailsList = document.querySelector('#emails-list'); // Seleccionar emails-list
-      emailsList.innerHTML = ''; // Limpiar lista
+      const emailsList = document.querySelector('#emails-list');
+      emailsList.innerHTML = '';
 
       emails.forEach(email => {
-        // Crear el elemento HTML para cada correo
         const emailItem = document.createElement('div');
         emailItem.className = 'email-item';
 
-        // Si el correo está leído, agregar la clase 'read', si no, 'unread'
         if (email.read) {
           emailItem.classList.add('read');
         } else {
@@ -97,33 +86,59 @@ function load_mailbox(mailbox) {
 }
 
 function view_email(email_id) {
-  // Hide other views and show the email detail view
   document.querySelector('#emails-view').style.display = 'none';
   document.querySelector('#compose-view').style.display = 'none';
   document.querySelector('#email-detail-view').style.display = 'block';
 
-  // Fetch the email details
   fetch(`/emails/${email_id}`)
-      .then(response => response.json())
-      .then(email => {
-          // Display email contents
-          document.querySelector('#email-detail-view').innerHTML = `
-              <h3>${email.subject}</h3>
-              <p><strong>From:</strong> ${email.sender}</p>
-              <p><strong>To:</strong> ${email.recipients.join(', ')}</p>
-              <p><strong>Timestamp:</strong> ${email.timestamp}</p>
-              <hr>
-              <p>${email.body}</p>
-          `;
+    .then(response => response.json())
+    .then(email => {
+      document.querySelector('#email-detail-view').innerHTML = `
+        <h3>${email.subject}</h3>
+        <p><strong>From:</strong> ${email.sender}</p>
+        <p><strong>To:</strong> ${email.recipients.join(', ')}</p>
+        <p><strong>Timestamp:</strong> ${email.timestamp}</p>
+        <hr>
+        <p>${email.body}</p>
+      `;
 
-          // Mark email as read
-          if (!email.read) {
-              fetch(`/emails/${email_id}`, {
-                  method: 'PUT',
-                  body: JSON.stringify({ read: true }),
-                  headers: { "Content-Type": "application/json" }
-              });
-          }
-      })
-      .catch(error => console.error('Error:', error));
+      // Botón para archivar
+      const archiveButton = document.createElement('button');
+      archiveButton.className = 'btn btn-secondary';
+      archiveButton.innerHTML = email.archived ? 'Unarchive' : 'Archive';
+      archiveButton.addEventListener('click', () => {
+        fetch(`/emails/${email_id}`, {
+          method: 'PUT',
+          body: JSON.stringify({ archived: !email.archived }),
+          headers: { "Content-Type": "application/json" }
+        })
+        .then(() => load_mailbox('inbox'));
+      });
+
+      // Botón para responder
+      const replyButton = document.createElement('button');
+      replyButton.className = 'btn btn-primary ml-2';
+      replyButton.innerHTML = 'Reply';
+      replyButton.addEventListener('click', () => {
+        compose_email();
+        document.querySelector('#compose-recipients').value = email.sender;
+        document.querySelector('#compose-subject').value = email.subject.startsWith('Re:') ? email.subject : `Re: ${email.subject}`;
+        document.querySelector('#compose-body').value = `\n\nOn ${email.timestamp}, ${email.sender} wrote:\n${email.body}`;
+      });
+
+      // Botón para eliminar
+      const deleteButton = document.createElement('button');
+      deleteButton.className = 'btn btn-danger ml-2';
+      deleteButton.innerHTML = 'Delete';
+      deleteButton.addEventListener('click', () => {
+        fetch(`/emails/${email_id}`, {
+          method: 'DELETE',
+          headers: { "Content-Type": "application/json" }
+        })
+        .then(() => load_mailbox('inbox'));
+      });
+
+      document.querySelector('#email-detail-view').append(archiveButton, replyButton, deleteButton);
+    })
+    .catch(error => console.error('Error:', error));
 }
