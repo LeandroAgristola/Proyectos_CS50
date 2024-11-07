@@ -160,3 +160,7 @@ def register(request):
         return HttpResponseRedirect(reverse("index"))
     else:
         return render(request, "mail/register.html")
+    
+@login_required
+def account_details(request):
+    return render(request, 'mail/account_details.html', {'user': request.user})

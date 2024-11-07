@@ -102,18 +102,21 @@ function view_email(email_id) {
         <p>${email.body}</p>
       `;
 
-      // Botón para archivar
-      const archiveButton = document.createElement('button');
-      archiveButton.className = 'btn btn-secondary';
-      archiveButton.innerHTML = email.archived ? 'Unarchive' : 'Archive';
-      archiveButton.addEventListener('click', () => {
-        fetch(`/emails/${email_id}`, {
-          method: 'PUT',
-          body: JSON.stringify({ archived: !email.archived }),
-          headers: { "Content-Type": "application/json" }
-        })
-        .then(() => load_mailbox('inbox'));
-      });
+      // Solo mostrar el botón de archivar si no está en la vista de enviados
+      if (email.sent === false) {
+        const archiveButton = document.createElement('button');
+        archiveButton.className = 'btn btn-secondary';
+        archiveButton.innerHTML = email.archived ? 'Unarchive' : 'Archive';
+        archiveButton.addEventListener('click', () => {
+          fetch(`/emails/${email_id}`, {
+            method: 'PUT',
+            body: JSON.stringify({ archived: !email.archived }),
+            headers: { "Content-Type": "application/json" }
+          })
+          .then(() => load_mailbox('inbox'));
+        });
+        document.querySelector('#email-detail-view').appendChild(archiveButton);
+      }
 
       // Botón para responder
       const replyButton = document.createElement('button');
@@ -138,7 +141,7 @@ function view_email(email_id) {
         .then(() => load_mailbox('inbox'));
       });
 
-      document.querySelector('#email-detail-view').append(archiveButton, replyButton, deleteButton);
+      document.querySelector('#email-detail-view').append(replyButton, deleteButton);
     })
     .catch(error => console.error('Error:', error));
 }

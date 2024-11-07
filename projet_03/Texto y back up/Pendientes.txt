@@ -11,11 +11,12 @@ Funcionalidad:
 *En las bandejas el ultimo mail de la lista se muestra desplegado (se ve el contenido) si la bandeja tiene un solo mail se muestra el contenido directamente
 *Permitir eliminar mail de cualquier casilla
 *Desde la ventana de administracion se deben poder eliminar todo la informacion
+*Mostrar nombre en vez de correo
+
 
 Al colocar contraseña incorrecta genera un error CSRF 
 No permitir ni mostrar el boton de archivar en sent
 Agregar campos al registro Nombre, apellido, foto de perfil
-Mostrar nombre en vez de correo
 Mostrar boton "mi cuenta" en navbar a la derecha con un menu desplegable
 Menu desplegable debe contener Datos de la cuenta (muestra un nuevo template con los datos de la cuenta), cerrar sesion 
 

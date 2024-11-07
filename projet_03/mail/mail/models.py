@@ -3,7 +3,9 @@ from django.db import models
 
 
 class User(AbstractUser):
-    pass
+    first_name = models.CharField(max_length=30)
+    last_name = models.CharField(max_length=30)
+    profile_picture = models.ImageField(upload_to='profile_pics/', null=True, blank=True)
 
 
 class Email(models.Model):
@@ -19,8 +21,8 @@ class Email(models.Model):
     def serialize(self):
         return {
             "id": self.id,
-            "sender": self.sender.email,
-            "recipients": [user.email for user in self.recipients.all()],
+            "sender": f"{self.sender.first_name} {self.sender.last_name}",
+            "recipients": [f"{user.first_name} {user.last_name}" for user in self.recipients.all()],
             "subject": self.subject,
             "body": self.body,
             "timestamp": self.timestamp.strftime("%b %d %Y, %I:%M %p"),

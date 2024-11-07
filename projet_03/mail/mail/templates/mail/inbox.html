@@ -2,7 +2,7 @@
 {% load static %}
 
 {% block body %}
-    <h2>{{ request.user.email }}</h2>
+    <h2>{{ request.user.first_name }} {{ request.user.last_name }}</h2>
 
     <!-- Botones de navegación -->
     <a class="btn btn-sm btn-outline-primary" href="#" id="inbox">Inbox</a>
@@ -11,6 +11,16 @@
     <a class="btn btn-sm btn-outline-primary" href="#" id="archived">Archived</a>
     <a class="btn btn-sm btn-outline-primary" href="{% url 'logout' %}">Log Out</a>
     <hr>
+
+    <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Mi Cuenta
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" href="{% url 'account_details' %}">Datos de la Cuenta</a>
+            <a class="dropdown-item" href="{% url 'logout' %}">Cerrar Sesión</a>
+        </div>
+    </li>
 
     <!-- Vista de correos y formulario de redacción -->
     <div id="emails-view" style="display: none;">
