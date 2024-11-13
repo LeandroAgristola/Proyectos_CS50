@@ -13,13 +13,11 @@ Funcionalidad:
 *Desde la ventana de administracion se deben poder eliminar todo la informacion
 *Mostrar nombre en vez de correo
 
-
-Al colocar contraseña incorrecta genera un error CSRF 
-No permitir ni mostrar el boton de archivar en sent
 Agregar campos al registro Nombre, apellido, foto de perfil
+
+No permitir ni mostrar el boton de archivar en sent
 Mostrar boton "mi cuenta" en navbar a la derecha con un menu desplegable
 Menu desplegable debe contener Datos de la cuenta (muestra un nuevo template con los datos de la cuenta), cerrar sesion 
-
 En el menu de datos de la cuenta permitir editar todos los campos menos la direccion de correo
 Agregar funcionalidad para eliminar cuenta
 Agregar carpeta vendor con archivos de bootstrap

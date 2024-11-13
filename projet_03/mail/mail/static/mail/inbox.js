@@ -102,8 +102,8 @@ function view_email(email_id) {
         <p>${email.body}</p>
       `;
 
-      // Solo mostrar el botón de archivar si no está en la vista de enviados
-      if (email.sent === false) {
+      // Mostrar botón de archivar si el email no es de enviados
+      if (!email.sent) {
         const archiveButton = document.createElement('button');
         archiveButton.className = 'btn btn-secondary';
         archiveButton.innerHTML = email.archived ? 'Unarchive' : 'Archive';
