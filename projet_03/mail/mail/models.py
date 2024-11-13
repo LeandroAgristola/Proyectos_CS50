@@ -21,11 +21,12 @@ class Email(models.Model):
     def serialize(self):
         return {
             "id": self.id,
-            "sender": f"{self.sender.first_name} {self.sender.last_name}",
-            "recipients": [f"{user.first_name} {user.last_name}" for user in self.recipients.all()],
+            "sender": self.sender.email,  # Asegúrate de retornar el correo
+            "recipients": [user.email for user in self.recipients.all()],
             "subject": self.subject,
             "body": self.body,
-            "timestamp": self.timestamp.strftime("%b %d %Y, %I:%M %p"),
+            "timestamp": self.timestamp,
             "read": self.read,
-            "archived": self.archived
+            "archived": self.archived,
+            "sent": self.sender == self.user
         }

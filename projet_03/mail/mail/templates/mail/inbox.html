@@ -2,32 +2,24 @@
 {% load static %}
 
 {% block body %}
-    <h2>{{ request.user.first_name }} {{ request.user.last_name }}</h2>
+<h2>{{ request.user.first_name }} {{ request.user.last_name }}</h2>
 
+  <ul class="nav">
     <!-- Botones de navegación -->
-    <a class="btn btn-sm btn-outline-primary" href="#" id="inbox">Inbox</a>
-    <a class="btn btn-sm btn-outline-primary" href="#" id="compose">Compose</a>
-    <a class="btn btn-sm btn-outline-primary" href="#" id="sent">Sent</a>
-    <a class="btn btn-sm btn-outline-primary" href="#" id="archived">Archived</a>
-    <a class="btn btn-sm btn-outline-primary" href="{% url 'logout' %}">Log Out</a>
+    <li class="nav-item"></li><a class="btn btn-sm btn-outline-primary" href="#" id="inbox">Inbox</a></li>
+    <li class="nav-item"><a class="btn btn-sm btn-outline-primary" href="#" id="compose">Compose</a></li>
+    <li class="nav-item"><a class="btn btn-sm btn-outline-primary" href="#" id="sent">Sent</a></li>
+    <li class="nav-item"><a class="btn btn-sm btn-outline-primary" href="#" id="archived">Archived</a></li>
+    <li class="nav-item"><a class="btn btn-sm btn-outline-primary" href="{% url 'logout' %}">Cerrar Sesión</a></li>
+  </ul>
     <hr>
-
-    <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            Mi Cuenta
-        </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item" href="{% url 'account_details' %}">Datos de la Cuenta</a>
-            <a class="dropdown-item" href="{% url 'logout' %}">Cerrar Sesión</a>
-        </div>
-    </li>
 
     <!-- Vista de correos y formulario de redacción -->
     <div id="emails-view" style="display: none;">
         <!-- Aquí se mostrarán los correos -->
-      </div>
+    </div>
       
-      <div id="compose-view" style="display: none;">
+    <div id="compose-view" style="display: none;">
         <h3>New Email</h3>
         <form id="compose-form" method="POST">
         {% csrf_token %}
@@ -43,15 +35,16 @@
           <textarea class="form-control" id="compose-body" placeholder="Body"></textarea>
           <input type="submit" class="btn btn-primary"/>
         </form>
-      </div>
+    </div>
       
-      <div id="email-detail-view" style="display: none;">
+    <div id="email-detail-view" style="display: none;">
         <!-- Aquí se mostrará el detalle del correo seleccionado -->
-      </div>
+    </div>
       
       
 {% endblock %}
 
 {% block script %}
     <script src="{% static 'mail/inbox.js' %}"></script>
+    
 {% endblock %}

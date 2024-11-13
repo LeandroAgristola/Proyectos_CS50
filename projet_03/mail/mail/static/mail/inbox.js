@@ -1,27 +1,22 @@
 document.addEventListener('DOMContentLoaded', function() {
 
-  // Configurar eventos para las vistas
   document.querySelector('#inbox').addEventListener('click', () => load_mailbox('inbox'));
   document.querySelector('#sent').addEventListener('click', () => load_mailbox('sent'));
   document.querySelector('#archived').addEventListener('click', () => load_mailbox('archive'));
   document.querySelector('#compose').addEventListener('click', compose_email);
 
-  // Cargar la bandeja de entrada por defecto
   load_mailbox('inbox');
 });
 
 function compose_email() {
-  // Ocultar vistas innecesarias
   document.querySelector('#emails-view').style.display = 'none';
   document.querySelector('#email-detail-view').style.display = 'none';
   document.querySelector('#compose-view').style.display = 'block';
 
-  // Limpiar campos
   document.querySelector('#compose-recipients').value = '';
   document.querySelector('#compose-subject').value = '';
   document.querySelector('#compose-body').value = '';
 
-  // Configurar el envío del formulario
   document.querySelector('#compose-form').onsubmit = function(event) {
     event.preventDefault();
 
@@ -102,7 +97,6 @@ function view_email(email_id) {
         <p>${email.body}</p>
       `;
 
-      // Mostrar botón de archivar si el email no es de enviados
       if (!email.sent) {
         const archiveButton = document.createElement('button');
         archiveButton.className = 'btn btn-secondary';
@@ -118,7 +112,6 @@ function view_email(email_id) {
         document.querySelector('#email-detail-view').appendChild(archiveButton);
       }
 
-      // Botón para responder
       const replyButton = document.createElement('button');
       replyButton.className = 'btn btn-primary ml-2';
       replyButton.innerHTML = 'Reply';
@@ -129,7 +122,6 @@ function view_email(email_id) {
         document.querySelector('#compose-body').value = `\n\nOn ${email.timestamp}, ${email.sender} wrote:\n${email.body}`;
       });
 
-      // Botón para eliminar
       const deleteButton = document.createElement('button');
       deleteButton.className = 'btn btn-danger ml-2';
       deleteButton.innerHTML = 'Delete';

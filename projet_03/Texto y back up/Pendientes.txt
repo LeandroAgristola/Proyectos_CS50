@@ -11,23 +11,18 @@ Funcionalidad:
 *En las bandejas el ultimo mail de la lista se muestra desplegado (se ve el contenido) si la bandeja tiene un solo mail se muestra el contenido directamente
 *Permitir eliminar mail de cualquier casilla
 *Desde la ventana de administracion se deben poder eliminar todo la informacion
+*Agregar campos al registro Nombre, apellido, foto de perfil
+*No permitir ni mostrar el boton de archivar en sent
+*Agregar carpeta vendor con archivos de bootstrap
+*Cambiar link de archivos de estilo
 *Mostrar nombre en vez de correo
 
-Agregar campos al registro Nombre, apellido, foto de perfil
-
-No permitir ni mostrar el boton de archivar en sent
-Mostrar boton "mi cuenta" en navbar a la derecha con un menu desplegable
-Menu desplegable debe contener Datos de la cuenta (muestra un nuevo template con los datos de la cuenta), cerrar sesion 
-En el menu de datos de la cuenta permitir editar todos los campos menos la direccion de correo
-Agregar funcionalidad para eliminar cuenta
-Agregar carpeta vendor con archivos de bootstrap
-Cambiar link de archivos de estilo
 
 Diseño:
-*Si el correo electrónico no se lee, debe aparecer con un fondo blanco. Si el correo electrónico ha sido leído, debe aparecer con un fondo gris.
 
-Agregar boton de engranaje para ver los datos de la cuenta
-Agregar facvicon
+*Agregar facvicon
+
+Si el correo electrónico no se lee, debe aparecer con un fondo blanco. Si el correo electrónico ha sido leído, debe aparecer con un fondo gris.
 Agregar logo
 Boton encima del navbar para Redactar msj
 colocar botones de forma vertical
@@ -43,8 +38,14 @@ Diseñar un front-end para un cliente de correo electrónico que realice llamada
 
 Vamos a continuar con las funcionalidades extras
 
+#-----forms.py:
+
+#-----.html
+
 #-----inbox.js:
 
 #-----urls.py:
 
 #-----views.py:
+
+#-----models.py:

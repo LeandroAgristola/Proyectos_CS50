@@ -7,6 +7,7 @@ from django.shortcuts import HttpResponse, HttpResponseRedirect, render
 from django.urls import reverse
 from django.views.decorators.csrf import csrf_exempt
 from .models import User, Email
+from .forms import UserRegistrationForm
 
 def index(request):
 
@@ -17,7 +18,6 @@ def index(request):
     # Everyone else is prompted to sign in
     else:
         return HttpResponseRedirect(reverse("login"))
-
 
 @csrf_exempt
 @login_required
@@ -41,23 +41,31 @@ def compose(request):
     subject = data.get("subject", "")
     body = data.get("body", "")
 
-    users = set()
-    users.add(request.user)
-    users.update(recipients)
-    for user in users:
+    # Crear y asignar el email
+    for recipient in recipients:
         email = Email(
-            user=user,
-            sender=request.user,
+            user=recipient,            # El dueño del correo es el destinatario
+            sender=request.user,       # El remitente
             subject=subject,
             body=body,
-            read=user == request.user
+            read=False                 # Marcar como no leído para el destinatario
         )
         email.save()
-        for recipient in recipients:
-            email.recipients.add(recipient)
+        email.recipients.add(*recipients)  # Añadir los destinatarios
         email.save()
 
-    # Respuesta clara al cliente
+    # Crear el correo en la bandeja de enviados del remitente
+    email_sent = Email(
+        user=request.user,           # El dueño del correo es el remitente
+        sender=request.user,
+        subject=subject,
+        body=body,
+        read=True                    # Marcar como leído para el remitente
+    )
+    email_sent.save()
+    email_sent.recipients.add(*recipients)
+    email_sent.save()
+
     return JsonResponse({"message": "Email sent successfully."}, status=201)
 
 @login_required
@@ -134,33 +142,21 @@ def logout_view(request):
     logout(request)
     return HttpResponseRedirect(reverse("index"))
 
-
 def register(request):
     if request.method == "POST":
-        email = request.POST["email"]
-
-        # Ensure password matches confirmation
-        password = request.POST["password"]
-        confirmation = request.POST["confirmation"]
-        if password != confirmation:
-            return render(request, "mail/register.html", {
-                "message": "Passwords must match."
-            })
-
-        # Attempt to create new user
-        try:
-            user = User.objects.create_user(email, email, password)
+        form = UserRegistrationForm(request.POST, request.FILES)
+        if form.is_valid():
+            user = form.save(commit=False)
+            user.first_name = form.cleaned_data.get("first_name")
+            user.last_name = form.cleaned_data.get("last_name")
+            if request.FILES.get("profile_picture"):
+                user.profile_picture = request.FILES["profile_picture"]
             user.save()
-        except IntegrityError as e:
-            print(e)
-            return render(request, "mail/register.html", {
-                "message": "Email address already taken."
-            })
-        login(request, user)
-        return HttpResponseRedirect(reverse("index"))
+            login(request, user)
+            return HttpResponseRedirect(reverse("index"))
+        else:
+            return render(request, "mail/register.html", {"form": form, "message": "Error in form submission."})
     else:
-        return render(request, "mail/register.html")
+        form = UserRegistrationForm()
+        return render(request, "mail/register.html", {"form": form})
     
-@login_required
-def account_details(request):
-    return render(request, 'mail/account_details.html', {'user': request.user})
