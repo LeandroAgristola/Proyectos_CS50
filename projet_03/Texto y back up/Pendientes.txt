@@ -22,12 +22,17 @@ Diseño:
 
 *Agregar facvicon
 *Si el correo electrónico no se lee, debe aparecer con un fondo blanco. Si el correo electrónico ha sido leído, debe aparecer con un fondo gris.
+*Agregar logo
+*Boton encima del navbar para Redactar msj
+*colocar botones de forma vertical
+*logo de mail arriba
 
-Agregar logo
-Boton encima del navbar para Redactar msj
-colocar botones de forma vertical
-logo de mail arriba
-al lado del logo el buscador
+Login y register que nose vea el navbar 
+Agregar en login y register el logo y el nombre encima del formularios
+Estilos formularios
+Ajustar botones de navbar
+Ajustar el logo con el nombre en centrado horizontalmente
+Cambiar colores de botones y estilos en general
 
 
 

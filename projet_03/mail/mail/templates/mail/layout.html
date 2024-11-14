@@ -1,40 +1,46 @@
 {% load static %}
-
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <head>
-            <title>{% block title %}Auctions{% endblock %}</title>
-            <meta charset="utf-8"> 
-            <meta name="viewport" content="width=device-width, initial-scale=1.0">
-            <meta name="description" content="">
-            
-            <!-- Font and Icons -->
-            <link rel="preconnect" href="https://fonts.googleapis.com">
-            <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> 
-            <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
-            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-        
-            <!-- Custom Stylesheets -->
-            {% block css %}
-            <link href="{% static 'mail/css/styles.css' %}" rel="stylesheet">
-            <link rel="stylesheet" href="{% static 'mail/vendor/bootstrap/css/bootstrap.min.css' %}">
-            {% endblock %}
-        
-            <!-- Favicon -->
-            <link rel="icon" type="image/x-icon" href="{% static 'mail/logo/favicon.ico' %}">
-        </head>
-        {% block script %}
-        {% endblock %}
-    </head>
-    <body>
-        <div class="container">
-            
-            {% block body %}
-            {% endblock %}
+<head>
+    <title>{% block title %}Django Mail{% endblock %}</title>
+    <meta charset="utf-8"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'mail/vendor/bootstrap/css/bootstrap.min.css' %}">
+    <link href="{% static 'mail/css/styles.css' %}" rel="stylesheet">
+    <link rel="icon" type="image/x-icon" href="{% static 'mail/logo/favicon.ico' %}">
+</head>
+<body>
+    <div class="container-fluid">
+        <!-- Sidebar Navbar -->
+        <div class="row">
+            <div class="col-2 p-3 border-end">
+                <img src="{% static 'mail/logo/LogoMail.png' %}" alt="Logo" width="60" height="40">
+                <h2 class="d-inline-block ms-2">Django Mail</h2>
+
+                <!-- Navigation Links -->
+                <ul class="nav flex-column mt-4">
+                    <li class="nav-item">
+                        <a class="btn btn-sm btn-outline-primary mb-2" href="#" id="compose">Compose</a>
+                    </li>
+                    <hr>
+                    <li class="nav-item"><a class="nav-link" href="#" id="inbox">Inbox</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#" id="sent">Sent</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#" id="archived">Archived</a></li>
+                    <hr>
+                    <li class="nav-item"><a class="nav-link" href="{% url 'logout' %}">Cerrar Sesión</a></li>
+                </ul>
+            </div>
+            <div class="col-10">
+                <!-- Content Body -->
+                {% block body %}{% endblock %}
+            </div>
         </div>
-        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
-        <script src="{% static 'mail/vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
-    </body>
+    </div>
+
+    <!-- Scripts -->
+    <script src="{% static 'mail/inbox.js' %}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="{% static 'mail/vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+</body>
 </html>

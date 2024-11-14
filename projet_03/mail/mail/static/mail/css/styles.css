@@ -1,12 +1,50 @@
-textarea {
-    min-height: 400px;
+/* Ajuste de contenedor principal */
+.container-fluid {
+    max-width: 100vw;
 }
+
+/* Estilos del Navbar vertical */
+nav {
+    height: 100vh;
+    background-color: #f8f9fa;
+}
+
+nav ul.nav {
+    padding: 0;
+}
+
+nav ul.nav li a {
+    color: #333;
+    font-weight: bold;
+    padding: 10px;
+    display: block;
+}
+
+nav ul.nav li a:hover {
+    background-color: #e9ecef;
+}
+
+nav .btn-primary {
+    font-size: 1.1em;
+    font-weight: bold;
+}
+
+.header {
+    display: flex;
+    align-items: center;
+    padding: 15px;
+}
+
+/* Foto de usuario y Logo */
+img.rounded-circle {
+    border-radius: 50%;
+}
+
 .email-item {
     border-bottom: 1px solid #ddd;
     padding: 10px;
     cursor: pointer;
 }
-
 
 .email-item.unread {
     background-color: white;
