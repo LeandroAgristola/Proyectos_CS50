@@ -8,17 +8,14 @@ textarea {
 }
 
 
-/* Fondo blanco para correos no leídos */
 .email-item.unread {
     background-color: white;
 }
 
-/* Fondo gris para correos leídos */
-.email-item.read:hover {
+.email-item.read {
     background-color: #f0f0f0;
 }
 
 .email-item:hover {
-    background-color: #e0e0e0; /* Un gris más oscuro al pasar el ratón */
+    background-color: #e0e0e0;
 }
-

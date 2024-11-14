@@ -85,9 +85,20 @@ function view_email(email_id) {
   document.querySelector('#compose-view').style.display = 'none';
   document.querySelector('#email-detail-view').style.display = 'block';
 
+  // Fetch email details
   fetch(`/emails/${email_id}`)
     .then(response => response.json())
     .then(email => {
+      // Marcar como leído
+      if (!email.read) {
+        fetch(`/emails/${email_id}`, {
+          method: 'PUT',
+          body: JSON.stringify({ read: true }),
+          headers: { "Content-Type": "application/json" }
+        });
+      }
+
+      // Renderizar el contenido del email
       document.querySelector('#email-detail-view').innerHTML = `
         <h3>${email.subject}</h3>
         <p><strong>From:</strong> ${email.sender}</p>
@@ -97,6 +108,7 @@ function view_email(email_id) {
         <p>${email.body}</p>
       `;
 
+      // Agregar botones de archivar y responder
       if (!email.sent) {
         const archiveButton = document.createElement('button');
         archiveButton.className = 'btn btn-secondary';

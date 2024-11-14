@@ -21,8 +21,8 @@ Funcionalidad:
 Diseño:
 
 *Agregar facvicon
+*Si el correo electrónico no se lee, debe aparecer con un fondo blanco. Si el correo electrónico ha sido leído, debe aparecer con un fondo gris.
 
-Si el correo electrónico no se lee, debe aparecer con un fondo blanco. Si el correo electrónico ha sido leído, debe aparecer con un fondo gris.
 Agregar logo
 Boton encima del navbar para Redactar msj
 colocar botones de forma vertical
@@ -37,6 +37,8 @@ Bien continuando con el proyecto de Programación web de CS50 con Python y JavaS
 Diseñar un front-end para un cliente de correo electrónico que realice llamadas API para enviar y recibir correos electrónicos.
 
 Vamos a continuar con las funcionalidades extras
+
+Te aporto mis archivos, por favor analízalos todos con detalle y entregame una solución en base a mis archivos, no supongas, no me des ejemplos del estilo "asi deberia verse" analiza y entrega una solución en base a los requerimientos 
 
 #-----forms.py:
 
