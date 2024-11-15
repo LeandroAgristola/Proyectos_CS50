@@ -12,32 +12,10 @@
 </head>
 <body>
     <div class="container-fluid">
-        <!-- Sidebar Navbar -->
-        <div class="row">
-            <div class="col-2 p-3 border-end">
-                <img src="{% static 'mail/logo/LogoMail.png' %}" alt="Logo" width="60" height="40">
-                <h2 class="d-inline-block ms-2">Django Mail</h2>
-
-                <!-- Navigation Links -->
-                <ul class="nav flex-column mt-4">
-                    <li class="nav-item">
-                        <a class="btn btn-sm btn-outline-primary mb-2" href="#" id="compose">Compose</a>
-                    </li>
-                    <hr>
-                    <li class="nav-item"><a class="nav-link" href="#" id="inbox">Inbox</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#" id="sent">Sent</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#" id="archived">Archived</a></li>
-                    <hr>
-                    <li class="nav-item"><a class="nav-link" href="{% url 'logout' %}">Cerrar Sesión</a></li>
-                </ul>
-            </div>
-            <div class="col-10">
-                <!-- Content Body -->
-                {% block body %}{% endblock %}
-            </div>
-        </div>
+    <!-- Content Body -->
+    {% block body %}
+    {% endblock %}
     </div>
-
     <!-- Scripts -->
     <script src="{% static 'mail/inbox.js' %}"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>

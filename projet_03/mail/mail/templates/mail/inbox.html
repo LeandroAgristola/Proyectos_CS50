@@ -2,37 +2,67 @@
 {% load static %}
 
 {% block body %}
-
-    <div>
-      <img src="{% static 'mail/user/profile.jpg' %}" alt="Profile" class="rounded-circle" width="40" height="40">
-      <h2>{{ request.user.first_name }} {{ request.user.last_name }}</h2>
-    </div>
-    <hr>
-    <div id="emails-view" style="display: none;">
-        <!-- Aquí se mostrarán los correos -->
-    </div>
-
-    <div id="compose-view" style="display: none;">
-        <h3>Nuevo Mensaje</h3>
-        <form id="compose-form" method="POST">
-            {% csrf_token %}
-            <div class="form-group">
-                <label>From:</label>
-                <input disabled class="form-control" value="{{ request.user.email }}">
+    <div class="row">
+        <!-- Sidebar Navbar -->
+        <div class="col-2 p-3 border-end">
+            <div class="d-flex align-items-center gap-2">
+                <img src="{% static 'mail/logo/LogoMail.png' %}" alt="Logo" width="60" height="40">
+                <h2 class="mb-0">Django Mail</h2>
             </div>
-            <div class="form-group">
-                <label>To:</label>
-                <input id="compose-recipients" class="form-control">
+            <!-- Navigation Links -->
+            <ul class="nav flex-column mt-4">
+                <li class="nav-item">
+                <a class="btn btn-sm btn-outline-primary mb-2" href="#" id="compose">Compose</a>
+                </li>
+                <hr>
+                <li class="nav-item"><a class="nav-link" href="#" id="inbox">Inbox</a></li>
+                <li class="nav-item"><a class="nav-link" href="#" id="sent">Sent</a></li>
+                <li class="nav-item"><a class="nav-link" href="#" id="archived">Archived</a></li>
+                <hr>
+                <li class="nav-item"><a class="nav-link" href="{% url 'logout' %}">Cerrar Sesión</a></li>
+            </ul>
+        </div>
+        <div class="col-10">
+            <div class="d-flex align-items-center gap-2 mt-3">
+                <img src="{% static 'mail/user/profile.jpg' %}" alt="Profile" class="rounded-circle" width="50" height="50">
+                <h3>{{ request.user.first_name }} {{ request.user.last_name }}</h3>
             </div>
-            <div class="form-group">
-                <input class="form-control" id="compose-subject" placeholder="Asunto">
+            <hr>
+            <div id="emails-view" style="display: none;">
+                <!-- Aquí se mostrarán los correos -->
             </div>
-            <textarea class="form-control" id="compose-body" placeholder="Mensaje"></textarea>
-            <input type="submit" class="btn btn-primary mt-2" value="Enviar">
-        </form>
-    </div>
-
-    <div id="email-detail-view" style="display: none;">
-        <!-- Aquí se mostrará el detalle del correo seleccionado -->
+            <div id="compose-view" style="display: none;">
+                <h3>Nuevo Mensaje</h3>
+                <form id="compose-form" method="POST" class="me-auto" style="max-width: 80%;">
+                    {% csrf_token %}
+                    <!-- Campo From -->
+                    <div class="form-group mb-3">
+                        <label>From:</label>
+                        <input disabled class="form-control" value="{{ request.user.email }}">
+                    </div>
+                    <!-- Campo To -->
+                    <div class="form-group mb-3">
+                        <label>To:</label>
+                        <input id="compose-recipients" class="form-control">
+                    </div>
+                    <!-- Campo Subject -->
+                    <div class="form-group mb-3">
+                        <label>Asunto:</label>
+                        <input class="form-control" id="compose-subject" placeholder="Asunto">
+                    </div>
+                    <!-- Campo Mensaje -->
+                    <div class="form-group mb-3">
+                        <label>Mensaje:</label>
+                        <textarea class="form-control" id="compose-body" placeholder="Mensaje" rows="6"></textarea>
+                    </div>
+                    <!-- Botón Enviar -->
+                    <input type="submit" class="btn btn-primary mt-2" value="Enviar">
+                </form>
+            </div>
+            
+            <div id="email-detail-view" style="display: none;">
+                <!-- Aquí se mostrará el detalle del correo seleccionado -->
+            </div>
+        </div>
     </div>
 {% endblock %}
