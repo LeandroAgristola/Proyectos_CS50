@@ -65,3 +65,13 @@ h2.mb-0{
     margin-top: 0.5em;
     border-radius: 5px;
 }
+
+.form-control:focus {
+    border-color: rgba(128, 128, 128, 0.75); 
+    box-shadow: 0 0 0 0.2rem rgba(49, 49, 49, 0.25); 
+}
+
+textarea.form-control:focus, select.form-control:focus {
+    border-color: rgba(128, 128, 128, 0.75);
+    box-shadow: 0 0 0 0.2rem rgba(128, 128, 128, 0.25);
+}
