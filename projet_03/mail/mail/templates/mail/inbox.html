@@ -12,7 +12,7 @@
             <!-- Navigation Links -->
             <ul class="nav flex-column mt-4">
                 <li class="nav-item">
-                <a class="btn btn-sm btn-outline-primary mb-2" href="#" id="compose">Compose</a>
+                <a class="btn btn-sm btn-outline-dark mb-2" href="#" id="compose">Compose</a>
                 </li>
                 <hr>
                 <li class="nav-item"><a class="nav-link" href="#" id="inbox">Inbox</a></li>
@@ -24,7 +24,11 @@
         </div>
         <div class="col-10">
             <div class="d-flex align-items-center gap-2 mt-3">
-                <img src="{% static 'mail/user/profile.jpg' %}" alt="Profile" class="rounded-circle" width="50" height="50">
+                {% if user.profile_picture %}
+                    <img src="{{ user.profile_picture.url }}" alt="Profile" class="rounded-circle" width="60" height="60">
+                {% else %}
+                    <img src="{% static 'mail/user/default_profile.jpg' %}" alt="Default Profile" class="rounded-circle" width="50" height="50">
+                {% endif %}
                 <h3>{{ request.user.first_name }} {{ request.user.last_name }}</h3>
             </div>
             <hr>

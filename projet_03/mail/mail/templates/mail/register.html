@@ -1,16 +1,44 @@
 {% extends "mail/layout.html" %}
+{% load static %}
 
 {% block body %}
-    <h2>Register</h2>
-    {% if message %}
-        <div>{{ message }}</div>
-    {% endif %}
+<div class="container d-flex flex-column justify-content-center align-items-center vh-100">
+    <div class="login-card p-4 rounded shadow">
+        <!-- Logo y Nombre de la Aplicación -->
+        <div class="d-flex align-items-center justify-content-center gap-2 mb-4">
+            <img src="{% static 'mail/logo/LogoMail.png' %}" alt="Logo" width="80" height="60">
+            <h1 class="mb-0">Django Mail</h1>
+        </div>
 
-    <form action="{% url 'register' %}" method="post" enctype="multipart/form-data">
-        {% csrf_token %}
-        {{ form.as_p }}  <!-- Renderiza todos los campos y muestra errores automáticamente -->
-        <input class="btn btn-primary" type="submit" value="Register">
-    </form>
+        <!-- Título de Registro -->
+        <h3 class="text-center mb-3">Register</h3>
 
-    Already have an account? <a href="{% url 'login' %}">Log In here.</a>
+        <!-- Mensaje de Error General -->
+        {% if message %}
+            <div class="alert alert-danger w-100 text-center">{{ message }}</div>
+        {% endif %}
+
+        <!-- Formulario de Registro -->
+        <form action="{% url 'register' %}" method="post" enctype="multipart/form-data" class="w-100">
+            {% csrf_token %}
+            {% for field in form %}
+                <div class="form-group mb-3">
+                    <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+                    {{ field }}
+                    {% if field.errors %}
+                        <div class="alert alert-danger mt-2">
+                            {{ field.errors|join:"<br>" }}
+                        </div>
+                    {% endif %}
+                </div>
+            {% endfor %}
+            <input class="btn btn-primary w-100" type="submit" value="Register">
+        </form>
+
+        <!-- Enlace de Login -->
+        <p class="text-center mt-3">
+            Already have an account? <a href="{% url 'login' %}">Log In here.</a>
+        </p>
+    </div>
+</div>
 {% endblock %}

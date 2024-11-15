@@ -28,8 +28,9 @@ h2.mb-0{
 }
 
 .nav-link {
-    font-size: 1.0em;
+    font-size: 1.2em;
     font-weight: bold;
+    color: #4e4e4e;
 }
 
 /* Efecto hover en iconos del Navbar con borde redondeado */
@@ -37,6 +38,7 @@ h2.mb-0{
     background-color: #e9ecef !important;
     border: 1px solid #ddd;
     border-radius: 5px;
+    color: #4e4e4e;
 }
 
 .email-item {
@@ -55,4 +57,11 @@ h2.mb-0{
 
 .email-item:hover {
     background-color: #e0e0e0;
+}
+
+.alert-danger {
+    font-size: 0.9em;
+    padding: 0.5em;
+    margin-top: 0.5em;
+    border-radius: 5px;
 }

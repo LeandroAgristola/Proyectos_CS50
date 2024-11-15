@@ -29,9 +29,8 @@ Diseño:
 *Login y register que nose vea el navbar
 *Ajustar botones de navbar
 *Ajustar el logo con el nombre en centrado horizontalmente
-
-Agregar en login y register el logo y el nombre encima del formularios
-Estilos formularios
+*Agregar en login y register el logo y el nombre encima del formularios
+*Estilos formularios
 Cambiar colores de botones y estilos en general
 
 
