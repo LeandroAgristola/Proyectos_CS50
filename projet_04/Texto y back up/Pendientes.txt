@@ -1,37 +1,9 @@
 Funcionalidad:
-*Navegar correctamente con los link de la barra de navegación
-*Ver buzon de enviados
-*Poder enviar el correo 
-*Al hacer click sobre un correo electronico, debemos abrir ese correo en un ventana nueva
-*instalar dependencias
-*Permita a los usuarios archivar y desarchivar correos electrónicos recibidos No enviados
-*Ver buzon de archivados
-*Permita a los usuarios responder a un correo electrónico
-*Agregar boton en el mail de responder o reenviar, archivar o borrar
-*En las bandejas el ultimo mail de la lista se muestra desplegado (se ve el contenido) si la bandeja tiene un solo mail se muestra el contenido directamente
-*Permitir eliminar mail de cualquier casilla
-*Desde la ventana de administracion se deben poder eliminar todo la informacion
-*Agregar campos al registro Nombre, apellido, foto de perfil
-*No permitir ni mostrar el boton de archivar en sent
-*Agregar carpeta vendor con archivos de bootstrap
-*Cambiar link de archivos de estilo
-*Mostrar nombre en vez de correo
+
 
 
 Diseño:
 
-*Agregar facvicon
-*Si el correo electrónico no se lee, debe aparecer con un fondo blanco. Si el correo electrónico ha sido leído, debe aparecer con un fondo gris.
-*Agregar logo
-*Boton encima del navbar para Redactar msj
-*colocar botones de forma vertical
-*logo de mail arriba
-*Login y register que nose vea el navbar
-*Ajustar botones de navbar
-*Ajustar el logo con el nombre en centrado horizontalmente
-*Agregar en login y register el logo y el nombre encima del formularios
-*Estilos formularios
-Cambiar colores de botones y estilos en general
 
 
 

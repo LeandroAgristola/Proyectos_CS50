@@ -1,0 +1,74 @@
+
+
+Prompt para IA (Formato optimizado para comprensión rápida):
+
+Objetivo del proyecto: Crear un sitio web de red social similar a Twitter usando Django, Python, JavaScript, HTML, y CSS. El sitio permite a los usuarios realizar publicaciones, seguir a otros usuarios y dar "me gusta" a las publicaciones.
+
+Estructura del código base:
+
+Proyecto: project4
+Aplicación: network
+urls.py: Define rutas como /, /login, /logout, y /register.
+views.py: Contiene las vistas iniciales:
+index: Retorna un template vacío (index.html).
+login_view: Maneja autenticación y redirige al index.
+logout_view: Cierra sesión y redirige al index.
+register: Muestra un formulario de registro y crea usuarios.
+layout.html: Controla la disposición del sitio y gestiona contenido según user.is_authenticated.
+Modelos en models.py:
+
+Incluye un modelo User (hereda de AbstractUser) con campos básicos como nombre, email y contraseña.
+Deben añadirse modelos para representar publicaciones (posts), "me gusta" (likes) y seguidores (followers).
+Migraciones necesarias tras cambios en modelos:
+bash
+Copiar código
+python manage.py makemigrations
+python manage.py migrate
+Especificaciones del proyecto:
+
+Nueva publicación:
+
+Usuarios autenticados pueden crear publicaciones de texto mediante un campo textarea y un botón de envío.
+Ubicación: Página principal o una página separada.
+Todas las publicaciones:
+
+Página que muestra publicaciones de todos los usuarios en orden cronológico inverso.
+Cada publicación incluye:
+Usuario que publicó.
+Contenido.
+Fecha y hora.
+Cantidad de "me gusta" (inicia en 0).
+Página de perfil:
+
+Al hacer clic en un nombre de usuario, se carga su perfil con:
+Número de seguidores y personas seguidas.
+Publicaciones en orden cronológico inverso.
+Si el visitante está autenticado y no es el mismo usuario, se muestra un botón para "Seguir" o "Dejar de seguir".
+Siguiendo:
+
+Página que muestra publicaciones solo de usuarios seguidos.
+Se comporta como "Todas las publicaciones", pero con un conjunto limitado.
+Disponible solo para usuarios autenticados.
+Paginación:
+
+Mostrar solo 10 publicaciones por página.
+Botones “Siguiente” y “Anterior” para navegar.
+Editar publicación:
+
+Usuarios pueden editar sus publicaciones:
+Reemplazar contenido con un textarea al hacer clic en "Editar".
+Guardar cambios sin recargar la página (usar JavaScript).
+Restringir edición solo a publicaciones propias.
+"Me gusta" y "No me gusta":
+
+Botón para alternar entre "Me gusta" y "No me gusta" en cada publicación.
+Actualización asíncrona del servidor y conteo visible usando JavaScript y fetch.
+Pistas útiles:
+
+Referencias a fetch de Project 3 para llamadas asíncronas.
+Usar Paginator de Django para gestionar paginación.
+Utilizar estilos de paginación de Bootstrap para diseño visual.
+Notas adicionales para IA:
+
+Organizar respuestas según requerimientos especificados.
+Al trabajar en tareas específicas, priorizar la claridad en la solución y minimizar interacción humana innecesaria.
