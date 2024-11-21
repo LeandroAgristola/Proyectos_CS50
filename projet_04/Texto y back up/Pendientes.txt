@@ -45,12 +45,11 @@ Pistas útiles
     Explora las funcionalidades de paginación de Bootstrap para la interfaz.
 
 
+Linkear archivos varios
+Configuracion de settings
+
 
 Diseño:
-
-
-
-
 
 Bien continuando con el proyecto de Programación web de CS50 con Python y JavaScript de havard academy, el cual me aporta todos los archivos para iniciar, el instructor me informa esto :
 

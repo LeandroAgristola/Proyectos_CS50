@@ -139,11 +139,11 @@ CRISPY_TEMPLATE_PACK = 'bootstrap5'
 #csrf configuration
 
 CSRF_TRUSTED_ORIGINS = [
-    'https://localhost:8000',  # Agrega tu origen aquí
-    'http://localhost:8000'    # Dependiendo si usas HTTP o HTTPS
+    'https://localhost:8000', 
+    'http://localhost:8000' 
 ]
 
 CSRF_COOKIE_SECURE = True
 
-CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5" #importamos crispy para trabajar con formularios 
+CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5" 
 CRISPY_TEMPLATE_PACK = "bootstrap5"
