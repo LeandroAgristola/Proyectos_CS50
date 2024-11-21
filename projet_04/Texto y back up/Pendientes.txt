@@ -1,5 +1,8 @@
 Funcionalidad:
 
+*Linkear archivos varios
+*Configuracion de settings
+
 Publicación nueva
     Los usuarios registrados podrán escribir publicaciones en texto mediante un área de texto y un botón para enviar.
     Puedes incluir esta funcionalidad en la parte superior de la página de "Todas las publicaciones" o en una página separada.
@@ -44,12 +47,16 @@ Pistas útiles
     Usa la clase Paginator de Django para la paginación en el backend.
     Explora las funcionalidades de paginación de Bootstrap para la interfaz.
 
-
-Linkear archivos varios
-Configuracion de settings
+Agregar nombre, apellido y foto al formulario de registro
 
 
 Diseño:
+
+*Agregar favicon
+*Cambiar logo
+
+
+
 
 Bien continuando con el proyecto de Programación web de CS50 con Python y JavaScript de havard academy, el cual me aporta todos los archivos para iniciar, el instructor me informa esto :
 
