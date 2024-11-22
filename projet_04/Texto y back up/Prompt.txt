@@ -20,16 +20,14 @@ Modelos en models.py:
 Incluye un modelo User (hereda de AbstractUser) con campos básicos como nombre, email y contraseña.
 Deben añadirse modelos para representar publicaciones (posts), "me gusta" (likes) y seguidores (followers).
 Migraciones necesarias tras cambios en modelos:
-bash
-Copiar código
-python manage.py makemigrations
-python manage.py migrate
+
 Especificaciones del proyecto:
 
 Nueva publicación:
 
 Usuarios autenticados pueden crear publicaciones de texto mediante un campo textarea y un botón de envío.
 Ubicación: Página principal o una página separada.
+
 Todas las publicaciones:
 
 Página que muestra publicaciones de todos los usuarios en orden cronológico inverso.

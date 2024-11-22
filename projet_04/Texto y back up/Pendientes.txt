@@ -2,33 +2,35 @@ Funcionalidad:
 
 *Linkear archivos varios
 *Configuracion de settings
-
-Publicación nueva
+*Publicación nueva
     Los usuarios registrados podrán escribir publicaciones en texto mediante un área de texto y un botón para enviar.
     Puedes incluir esta funcionalidad en la parte superior de la página de "Todas las publicaciones" o en una página separada.
-Todas las publicaciones
-    La opción "All Posts" en la barra de navegación llevará a una página que mostrará todas las publicaciones de todos los usuarios, ordenadas por las más recientes primero.
-    Cada publicación debe incluir:
-        Nombre de usuario del autor.
-        Contenido de la publicación.
-        Fecha y hora de creación.
-        Cantidad de "me gusta" (inicialmente será 0).
-Página de perfil
-    Al hacer clic en un nombre de usuario, se cargará su perfil, que debe mostrar:
-        Número de seguidores.
-        Número de usuarios a los que sigue.
-        Todas las publicaciones del usuario en orden cronológico inverso.
-        Si es otro usuario el que está viendo el perfil, debe mostrarse un botón para "Seguir" o "Dejar de seguir".
-        Un usuario no puede seguirse a sí mismo.
+*Todas las publicaciones
+    *La opción "All Posts" en la barra de navegación llevará a una página que mostrará todas las publicaciones de todos los usuarios, ordenadas por las más recientes primero.
+    *Cada publicación debe incluir:
+        *Nombre de usuario del autor.
+        *Contenido de la publicación.
+        *Fecha y hora de creación.
+        *Cantidad de "me gusta" (inicialmente será 0).
+*Página de perfil
+    *Al hacer clic en un nombre de usuario, se cargará su perfil, que debe mostrar:
+        *Número de seguidores.
+        *Número de usuarios a los que sigue.
+        *Todas las publicaciones del usuario en orden cronológico inverso.
+        *Si es otro usuario el que está viendo el perfil, debe mostrarse un botón para "Seguir" o "Dejar de seguir".
+        *Un usuario no puede seguirse a sí mismo.
+
 Siguiendo
     La opción "Following" en la barra de navegación llevará a una página donde se mostrarán solo las publicaciones de los usuarios que el usuario actual sigue.
     Esta página debe comportarse igual que la página de "Todas las publicaciones", pero con un conjunto más limitado de publicaciones.
     Solo estará disponible para usuarios registrados.
+
 Paginación
     En cualquier página que muestre publicaciones:
         Muestra solo 10 publicaciones por página.
         Si hay más de 10, debe aparecer un botón "Siguiente" para cargar la siguiente página.
         Si no estás en la primera página, debe aparecer un botón "Anterior".
+
 Editar publicaciones
     Los usuarios deben poder editar sus propias publicaciones mediante un botón o enlace de "Editar".
     Al hacer clic en "Editar":
@@ -36,6 +38,7 @@ Editar publicaciones
         El usuario debe poder guardar los cambios.
         Usa JavaScript para que esta funcionalidad no requiera recargar toda la página.
         Los usuarios no puedan editar publicaciones de otros usuarios, ni siquiera de forma indirecta.
+
 “Me gusta” y “No me gusta”
     Los usuarios podrán dar y quitar "me gusta" a cualquier publicación mediante un botón o enlace.
     Usar JavaScript para:
@@ -60,9 +63,9 @@ Diseño:
 
 Bien continuando con el proyecto de Programación web de CS50 con Python y JavaScript de havard academy, el cual me aporta todos los archivos para iniciar, el instructor me informa esto :
 
-Diseñar un front-end para un cliente de correo electrónico que realice llamadas API para enviar y recibir correos electrónicos.
+Este proyecto consiste en diseñar un sitio web de red social que permita a los usuarios realizar publicaciones, seguir a otros usuarios y dar “me gusta” a las publicaciones.
 
-Vamos a continuar con las funcionalidades extras
+Vamos a realizar las funcionalidad q me solicita el instructor
 
 Te aporto mis archivos, por favor analízalos todos con detalle y entregame una solución en base a mis archivos, no supongas, no me des ejemplos del estilo "asi deberia verse" analiza y entrega una solución en base a los requerimientos 
 
