@@ -11,6 +11,7 @@ urlpatterns = [
     path("logout", views.logout_view, name="logout"),
     path("register", views.register, name="register"),
     path("profile/<str:username>", views.profile_view, name="profile"),
+    path("following", views.following_view, name="following"),
 ]
 
 if settings.DEBUG:

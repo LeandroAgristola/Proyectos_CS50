@@ -103,3 +103,15 @@ def profile_view(request, username):
         "following_count": profile_user.following.count(),
     })
 
+@login_required
+def following_view(request):
+    following_users = request.user.following.all()
+    posts = Post.objects.filter(user__in=following_users).order_by('-created_at')
+
+    paginator = Paginator(posts, 10)
+    page_number = request.GET.get('page')
+    page_obj = paginator.get_page(page_number)
+
+    return render(request, "network/following.html", {
+        "posts": page_obj,
+    })

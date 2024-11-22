@@ -19,17 +19,15 @@ Funcionalidad:
         *Todas las publicaciones del usuario en orden cronológico inverso.
         *Si es otro usuario el que está viendo el perfil, debe mostrarse un botón para "Seguir" o "Dejar de seguir".
         *Un usuario no puede seguirse a sí mismo.
-
-Siguiendo
-    La opción "Following" en la barra de navegación llevará a una página donde se mostrarán solo las publicaciones de los usuarios que el usuario actual sigue.
-    Esta página debe comportarse igual que la página de "Todas las publicaciones", pero con un conjunto más limitado de publicaciones.
-    Solo estará disponible para usuarios registrados.
-
-Paginación
-    En cualquier página que muestre publicaciones:
-        Muestra solo 10 publicaciones por página.
-        Si hay más de 10, debe aparecer un botón "Siguiente" para cargar la siguiente página.
-        Si no estás en la primera página, debe aparecer un botón "Anterior".
+*Siguiendo
+    *La opción "Following" en la barra de navegación llevará a una página donde se mostrarán solo las publicaciones de los usuarios que el usuario actual sigue.
+    *Esta página debe comportarse igual que la página de "Todas las publicaciones", pero con un conjunto más limitado de publicaciones.
+    *Solo estará disponible para usuarios registrados.
+*Paginación
+    *En cualquier página que muestre publicaciones:
+        *Muestra solo 10 publicaciones por página.
+        *Si hay más de 10, debe aparecer un botón "Siguiente" para cargar la siguiente página.
+        *Si no estás en la primera página, debe aparecer un botón "Anterior".
 
 Editar publicaciones
     Los usuarios deben poder editar sus propias publicaciones mediante un botón o enlace de "Editar".
@@ -47,8 +45,8 @@ Editar publicaciones
 
 Pistas útiles
     Revisa ejemplos de llamadas fetch en JavaScript en el Proyecto 3.
-    Usa la clase Paginator de Django para la paginación en el backend.
-    Explora las funcionalidades de paginación de Bootstrap para la interfaz.
+    *Usa la clase Paginator de Django para la paginación en el backend.
+    *Explora las funcionalidades de paginación de Bootstrap para la interfaz.
 
 Agregar nombre, apellido y foto al formulario de registro
 
@@ -57,7 +55,13 @@ Diseño:
 
 *Agregar favicon
 *Cambiar logo
-
+cambiar color de fondo (negro)
+cambiar colo de texto (blanco)
+panel lateral nombre de perfil y logaut
+panel superiro all post, for you
+En los post debe mostra la foto de perfil y el nombre de usuario
+organizar informacion de la pagina como twitter
+panel lateral derecho debe mostra el buscador post con mas me gusta y recomendaciones de seguidores (segun tengan mas seguidores mostra 5)
 
 
 

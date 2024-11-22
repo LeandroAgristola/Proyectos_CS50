@@ -1,17 +1,7 @@
 {% extends "network/layout.html" %}
 
 {% block body %}
-<h2>All Posts</h2>
-
-<!-- New post form -->
-{% if user.is_authenticated %}
-<form method="post">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit" class="btn btn-primary">Post</button>
-</form>
-<hr>
-{% endif %}
+<h2>Following</h2>
 
 <!-- Display posts -->
 <div>
