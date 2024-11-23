@@ -12,6 +12,7 @@ urlpatterns = [
     path("register", views.register, name="register"),
     path("profile/<str:username>", views.profile_view, name="profile"),
     path("following", views.following_view, name="following"),
+    path("edit_post/<int:post_id>", views.edit_post, name="edit_post"),
 ]
 
 if settings.DEBUG:

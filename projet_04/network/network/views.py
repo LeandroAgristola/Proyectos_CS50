@@ -1,12 +1,14 @@
 from django.contrib.auth import authenticate, login, logout
 from django.db import IntegrityError
-from django.http import HttpResponse, HttpResponseRedirect
+from django.http import HttpResponse, HttpResponseRedirect, JsonResponse
 from django.shortcuts import render, redirect, get_object_or_404
 from django.urls import reverse
 from django.contrib.auth.decorators import login_required
 from .forms import PostForm
 from .models import User, Post
 from django.core.paginator import Paginator
+from django.views.decorators.csrf import csrf_exempt
+import json
 
 
 @login_required
@@ -115,3 +117,22 @@ def following_view(request):
     return render(request, "network/following.html", {
         "posts": page_obj,
     })
+
+@login_required
+def edit_post(request, post_id):
+    try:
+        post = Post.objects.get(id=post_id, user=request.user)
+    except Post.DoesNotExist:
+        return JsonResponse({"error": "Post not found or unauthorized."}, status=404)
+    
+    if request.method == "PUT":
+        data = json.loads(request.body)
+        new_content = data.get("content", "")
+        if new_content.strip():
+            post.content = new_content
+            post.save()
+            return JsonResponse({"message": "Post updated successfully."}, status=200)
+        else:
+            return JsonResponse({"error": "Content cannot be empty."}, status=400)
+
+    return JsonResponse({"error": "Invalid request method."}, status=400)
