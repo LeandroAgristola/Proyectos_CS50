@@ -1,6 +1,7 @@
 {% extends "network/layout.html" %}
-
+{% load extras %}
 {% block body %}
+<img src="{{ user.profile_picture|profile_picture_or_default }}" alt="Profile Picture" class="rounded-circle" width="30" height="30">
 <h2>{{ profile_user.username }}</h2>
 
 <p><strong>Followers:</strong> {{ followers_count }}</p>

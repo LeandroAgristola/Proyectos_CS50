@@ -1,6 +1,7 @@
 {% extends "network/layout.html" %}
-
+{% load extras %}
 {% block body %}
+
 <h2>Following</h2>
 
 <!-- Display posts -->
@@ -8,15 +9,26 @@
     {% for post in posts %}
         <div class="card mb-3">
             <div class="card-body">
-                <h5 class="card-title">
-                    <a href="{% url 'profile' post.user.username %}">
-                        {{ post.user.username }}
-                    </a>
-                </h5>
-                <p class="card-text">{{ post.content }}</p>
-                <p class="card-text text-muted">
-                    {{ post.created_at|date:"d M Y H:i" }} • {{ post.like_count }} Likes
-                </p>
+                    <h5 class="card-title">
+                        <a href="{% url 'profile' post.user.username %}">
+                            {{ post.user.username }}
+                        </a>
+                    </h5>
+                    <p class="card-text">{{ post.content }}</p>
+                    <p class="card-text text-muted">
+                        {{ post.created_at|date:"d M Y H:i" }} • {{ post.like_count }} Likes
+                    </p>
+                <!-- Botón Like -->
+                <button 
+                class="btn btn-sm btn-outline-primary like-btn" 
+                data-post-id="{{ post.id }}" 
+                data-liked="{{ post.is_liked_by_user }}">
+                {% if post.is_liked_by_user %}
+                    Unlike
+                {% else %}
+                    Like
+                {% endif %}
+            </button>
             </div>
         </div>
     {% endfor %}
@@ -46,4 +58,5 @@
     </ul>
 </nav>
 {% endif %}
+
 {% endblock %}

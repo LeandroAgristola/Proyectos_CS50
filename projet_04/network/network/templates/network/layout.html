@@ -1,4 +1,5 @@
 {% load static %}
+{% load extras %}
 
 <!DOCTYPE html>
 <html lang="en">
@@ -22,34 +23,41 @@
     <body>
         <div class="container">
             <nav class="navbar navbar-expand-lg navbar-light bg-light">
-                <a class="navbar-brand" href="#">Django Birdie</a>
+                <a class="navbar-brand" href="{% url 'index' %}">Django Birdie</a>
             
                 <div>
-                <ul class="navbar-nav mr-auto">
-                    {% if user.is_authenticated %}
+                    <ul class="navbar-nav mr-auto">
+                        {% if user.is_authenticated %}
+                            <li class="nav-item"></li>
+                                <img src="{{ user.profile_picture|profile_picture_or_default }}" alt="Profile Picture" class="rounded-circle" width="30" height="30">
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#"><strong>{{ user.username }}</strong></a>
+                            </li>
+                        {% endif %}
                         <li class="nav-item">
-                            <a class="nav-link" href="#"><strong>{{ user.username }}</strong></a>
+                        <a class="nav-link" href="{% url 'index' %}">All Posts</a>
                         </li>
-                    {% endif %}
-                    <li class="nav-item">
-                    <a class="nav-link" href="{% url 'index' %}">All Posts</a>
-                    </li>
-                    {% if user.is_authenticated %}
-                        <li class="nav-item">
-                            <a class="nav-link" href="{% url 'following' %}">Following</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{% url 'logout' %}">Log Out</a>
-                        </li>
-                    {% else %}
-                        <li class="nav-item">
-                            <a class="nav-link" href="{% url 'login' %}">Log In</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{% url 'register' %}">Register</a>
-                        </li>
-                    {% endif %}
-                </ul>
+                        {% if user.is_authenticated %}
+                            <li class="nav-item">
+                                <a class="nav-link" href="{% url 'following' %}">Following</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{% url 'logout' %}">Log Out</a>
+                            </li>
+                        {% else %}
+                            <li class="nav-item">
+                                <a class="nav-link" href="{% url 'login' %}">Log In</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{% url 'register' %}">Register</a>
+                            </li>
+                        {% endif %}
+                        <form method="get" action="{% url 'search' %}" class="d-flex">
+                            <input type="text" name="q" class="form-control me-2" placeholder="Search...">
+                            <button class="btn btn-outline-primary" type="submit">Search</button>
+                        </form>
+                    </ul>
                 </div>
             </nav>
             
@@ -60,6 +68,8 @@
         </div>
         <!-- JavaScript file for edit functionality -->
         <script src="{% static 'network/js/editPost.js' %}"></script>
+        <!-- JavaScript file for like functionality -->
+        <script src="{% static 'network/js/likePost.js' %}"></script>
         <!-- Popper.js for Bootstrap tooltips and popovers -->
         <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
         <!-- Bootstrap JavaScript bundle -->

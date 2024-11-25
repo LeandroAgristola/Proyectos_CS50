@@ -4,7 +4,7 @@ from django.db import models
 class User(AbstractUser):
     first_name = models.CharField(max_length=30)
     last_name = models.CharField(max_length=30)
-    profile_picture = models.ImageField(upload_to='profile_pics/', null=True, blank=True)
+    profile_picture = models.ImageField(upload_to='profile_pictures/', null=True, blank=True, default='user/default_profile.jpg')
     followers = models.ManyToManyField(
         'self', related_name='following', symmetrical=False, blank=True
     )

@@ -2,6 +2,8 @@ Funcionalidad:
 
 *Linkear archivos varios
 *Configuracion de settings
+*Agregar Barra de busqueda de usuarios y posts
+*Agregar nombre, apellido y foto al formulario de registro
 *Publicación nueva
     Los usuarios registrados podrán escribir publicaciones en texto mediante un área de texto y un botón para enviar.
     Puedes incluir esta funcionalidad en la parte superior de la página de "Todas las publicaciones" o en una página separada.
@@ -28,27 +30,25 @@ Funcionalidad:
         *Muestra solo 10 publicaciones por página.
         *Si hay más de 10, debe aparecer un botón "Siguiente" para cargar la siguiente página.
         *Si no estás en la primera página, debe aparecer un botón "Anterior".
-
-Editar publicaciones
-    Los usuarios deben poder editar sus propias publicaciones mediante un botón o enlace de "Editar".
-    Al hacer clic en "Editar":
-        El contenido de la publicación debe reemplazarse por un área de texto editable.
-        El usuario debe poder guardar los cambios.
-        Usa JavaScript para que esta funcionalidad no requiera recargar toda la página.
-        Los usuarios no puedan editar publicaciones de otros usuarios, ni siquiera de forma indirecta.
-
-“Me gusta” y “No me gusta”
-    Los usuarios podrán dar y quitar "me gusta" a cualquier publicación mediante un botón o enlace.
-    Usar JavaScript para:
-        Notificar al servidor sobre el cambio de forma asíncrona usando fetch.
-        Actualizar el contador de "me gusta" en la página sin recargarla.
-
-Pistas útiles
-    Revisa ejemplos de llamadas fetch en JavaScript en el Proyecto 3.
+*Editar publicaciones
+    *Los usuarios deben poder editar sus propias publicaciones mediante un botón o enlace de "Editar".
+    *Al hacer clic en "Editar":
+        *El contenido de la publicación debe reemplazarse por un área de texto editable.
+        *El usuario debe poder guardar los cambios.
+        *Usa JavaScript para que esta funcionalidad no requiera recargar toda la página.
+        *Los usuarios no puedan editar publicaciones de otros usuarios, ni siquiera de forma indirecta.
+*“Me gusta” y “No me gusta”
+    *Los usuarios podrán dar y quitar "me gusta" a cualquier publicación mediante un botón o enlace.
+    *Usar JavaScript para:
+        *Notificar al servidor sobre el cambio de forma asíncrona usando fetch.
+        *Actualizar el contador de "me gusta" en la página sin recargarla.
+*Pistas útiles
+    *Revisa ejemplos de llamadas fetch en JavaScript en el Proyecto 3.
     *Usa la clase Paginator de Django para la paginación en el backend.
     *Explora las funcionalidades de paginación de Bootstrap para la interfaz.
 
-Agregar nombre, apellido y foto al formulario de registro
+Corregir la funcionalidad de like unlike en Following
+Corregir edit post en index.html
 
 
 Diseño:
@@ -56,9 +56,10 @@ Diseño:
 *Agregar favicon
 *Cambiar logo
 cambiar color de fondo (negro)
-cambiar colo de texto (blanco)
+cambiar color de texto (blanco)
 panel lateral nombre de perfil y logaut
 panel superiro all post, for you
+El boton de like debe ser un corazon que se pone en rojo cuando esta like y en transparente cuando esta unlike
 En los post debe mostra la foto de perfil y el nombre de usuario
 organizar informacion de la pagina como twitter
 panel lateral derecho debe mostra el buscador post con mas me gusta y recomendaciones de seguidores (segun tengan mas seguidores mostra 5)
@@ -84,3 +85,8 @@ Te aporto mis archivos, por favor analízalos todos con detalle y entregame una 
 #-----views.py:
 
 #-----models.py:
+
+
+Recuerda que el código y comentarios del mismo debe estar en ingles 
+pero tus instrucciones tienen que estar en castellano así lo entiendo 
+yo (no entiendo ingles) y el código lo entiende el instructor que es de USA 
