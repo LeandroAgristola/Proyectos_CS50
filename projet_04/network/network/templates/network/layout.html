@@ -33,7 +33,7 @@
                                 <img src="{{ user.profile_picture|profile_picture_or_default }}" alt="Profile Picture" class="rounded-circle" width="30" height="30">
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#"><strong>{{ user.username }}</strong></a>
+                                <a class="nav-link" href="{% url 'profile' user.username %}"><strong>{{ user.username }}</strong></a>
                             </li>
                         {% endif %}
                         <li class="nav-item">

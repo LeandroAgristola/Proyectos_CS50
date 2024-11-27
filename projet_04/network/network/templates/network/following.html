@@ -10,6 +10,7 @@
         <div class="card mb-3">
             <div class="card-body">
                     <h5 class="card-title">
+                        <img src="{{ user.profile_picture|profile_picture_or_default }}" alt="Profile Picture" class="rounded-circle" width="30" height="30">
                         <a href="{% url 'profile' post.user.username %}">
                             {{ post.user.username }}
                         </a>

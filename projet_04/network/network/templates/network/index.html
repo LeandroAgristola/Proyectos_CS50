@@ -21,9 +21,7 @@
         <div class="card-body">
             <h5 class="card-title">
                 <img src="{{ user.profile_picture|profile_picture_or_default }}" alt="Profile Picture" class="rounded-circle" width="30" height="30">
-                <a href="{% url 'profile' post.user.username %}">
-                    {{ post.user.username }}
-                </a>
+                <a href="{% url 'profile' post.user.username %}">{{ post.user.username }}</a>
             </h5>
             <p class="card-text post-content" data-post-id="{{ post.id }}">{{ post.content }}</p>
             <p class="card-text text-muted">
