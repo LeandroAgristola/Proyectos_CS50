@@ -9,7 +9,7 @@ from .models import User, Post
 from django.core.paginator import Paginator
 from django.views.decorators.csrf import csrf_exempt
 import json
-from django.db.models import Q
+from django.db.models import Q, Count
 
 @login_required
 def index(request):
@@ -102,8 +102,12 @@ def profile_view(request, username):
 @login_required
 def following_view(request):
     following_users = request.user.following.all()
+
     posts = Post.objects.filter(user__in=following_users).order_by('-created_at')
 
+    for post in posts:
+        post.is_liked_by_user = post.likes.filter(id=request.user.id).exists()
+        
     paginator = Paginator(posts, 10)
     page_number = request.GET.get('page')
     page_obj = paginator.get_page(page_number)
