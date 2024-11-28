@@ -1,0 +1,79 @@
+{% load static %}
+{% load extras %}
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <head>
+            <!-- Page title block, allows for dynamic titles -->
+            <title>{% block title %}Django Birdie{% endblock %}</title>
+            <meta charset="utf-8"> 
+            <!-- Ensures proper scaling on different devices -->
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <meta name="csrf-token" content="{{ csrf_token }}">
+            <!-- Google font integration -->
+            <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
+            <!-- Bootstrap CSS for responsive design and styling -->
+            <link rel="stylesheet" href="{% static 'network/vendor/bootstrap/css/bootstrap.min.css' %}">
+            <!-- Custom CSS styles -->
+            <link href="{% static 'network/css/styles.css' %}" rel="stylesheet">
+            <!-- Favicon for browser tab -->
+            <link rel="icon" type="image/x-icon" href="{% static 'network/logo/favicon.ico' %}">
+        </head>
+    </head>
+    <body>
+        <div class="container">
+            <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                <a class="navbar-brand" href="{% url 'index' %}">Django Birdie</a>
+            
+                <div>
+                    <ul class="navbar-nav mr-auto">
+                        {% if user.is_authenticated %}
+                            <li class="nav-item"></li>
+                                <img src="{{ user.profile_picture|profile_picture_or_default }}" alt="Profile Picture" class="rounded-circle" width="30" height="30">
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{% url 'profile' user.username %}"><strong>{{ user.username }}</strong></a>
+                            </li>
+                        {% endif %}
+                        <li class="nav-item">
+                        <a class="nav-link" href="{% url 'index' %}">All Posts</a>
+                        </li>
+                        {% if user.is_authenticated %}
+                            <li class="nav-item">
+                                <a class="nav-link" href="{% url 'following' %}">Following</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{% url 'logout' %}">Log Out</a>
+                            </li>
+                        {% else %}
+                            <li class="nav-item">
+                                <a class="nav-link" href="{% url 'login' %}">Log In</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{% url 'register' %}">Register</a>
+                            </li>
+                        {% endif %}
+                        <form method="get" action="{% url 'search' %}" class="d-flex">
+                            <input type="text" name="q" class="form-control me-2" placeholder="Search...">
+                            <button class="btn btn-outline-primary" type="submit">Search</button>
+                        </form>
+                    </ul>
+                </div>
+            </nav>
+            
+            <div class="body">
+                {% block body %}
+                {% endblock %}
+            </div>
+        </div>
+        <!-- JavaScript file for edit functionality -->
+        <script src="{% static 'network/js/editPost.js' %}"></script>
+        <!-- JavaScript file for like functionality -->
+        <script src="{% static 'network/js/likePost.js' %}"></script>
+        <!-- Popper.js for Bootstrap tooltips and popovers -->
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+        <!-- Bootstrap JavaScript bundle -->
+        <script src="{% static 'network/vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+    </body>
+</html>

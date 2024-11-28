@@ -46,31 +46,38 @@ Funcionalidad:
     *Revisa ejemplos de llamadas fetch en JavaScript en el Proyecto 3.
     *Usa la clase Paginator de Django para la paginación en el backend.
     *Explora las funcionalidades de paginación de Bootstrap para la interfaz.
-
-Corregir la funcionalidad de like unlike en Following
-Corregir edit post en index.html
+*Corregir la funcionalidad de like unlike en Following
+*Corregir edit post en index.html
 
 
 Diseño:
 
 *Agregar favicon
 *Cambiar logo
-cambiar color de fondo (negro)
-cambiar color de texto (blanco)
-panel lateral nombre de perfil y logaut
-panel superiro all post, for you
-El boton de like debe ser un corazon que se pone en rojo cuando esta like y en transparente cuando esta unlike
-En los post debe mostra la foto de perfil y el nombre de usuario
-organizar informacion de la pagina como twitter
-panel lateral derecho debe mostra el buscador post con mas me gusta y recomendaciones de seguidores (segun tengan mas seguidores mostra 5)
+*En los post debe mostra la foto de perfil y el nombre de usuario
+*cambiar color de fondo (negro)
+*cambiar color de texto (blanco)
+*panel lateral nombre de perfil y logaut
+*panel superiro all post, for you
+*organizar informacion de la pagina como twitter
+El nombre de usuario deberia llevarnos a la vista del perfil del usuario (funcionalidad que perdimos en tus modificaciones)
+Los datos del panel lateral izquierdo deben tener un estilo igual con un hover redondeado grisaseo
+Lo datos de fecha y hora del post deben estar al lado del nombre de usuario con un separacion para no quedar tan juntos 
+Los datos de fecha deben tener un color blanco pero mas suave que el resto del texto para diferenciar
+La barra de busqueda debe ser mas grande con lo bordes mas redondeados con el boton de busqueda incorporado al la barra
+El boton de post tiene que estar a la derecha como twitter
 
+
+El boton de like debe ser un corazon que se pone en rojo cuando esta like y en transparente cuando esta unlike
+adaptar fomrato de index.html a following.html
+Ajustar formularios deben estar centralizados en la pantalla con el logo y el nombre de la pagina en el medio en la parte superior
 
 
 Bien continuando con el proyecto de Programación web de CS50 con Python y JavaScript de havard academy, el cual me aporta todos los archivos para iniciar, el instructor me informa esto :
 
 Este proyecto consiste en diseñar un sitio web de red social que permita a los usuarios realizar publicaciones, seguir a otros usuarios y dar “me gusta” a las publicaciones.
 
-Vamos a realizar las funcionalidad q me solicita el instructor
+Vamos a continuar con el estilo del sitio
 
 Te aporto mis archivos, por favor analízalos todos con detalle y entregame una solución en base a mis archivos, no supongas, no me des ejemplos del estilo "asi deberia verse" analiza y entrega una solución en base a los requerimientos 
 
@@ -86,7 +93,26 @@ Te aporto mis archivos, por favor analízalos todos con detalle y entregame una 
 
 #-----models.py:
 
+Bien continuando con el proyecto de Programación web de CS50 con Python y JavaScript de havard academy, el cual me aporta todos los archivos para iniciar, el instructor me informa esto :
+
+Este proyecto consiste en diseñar un sitio web de red social que permita a los usuarios realizar publicaciones, seguir a otros usuarios y dar “me gusta” a las publicaciones.
+
+Vamos a continuar con el estilo del sitio
+
+Para el estilo vamos a utilizar estilos de bootstrap y CSS.
+
+Estas son las ubicaciones de los archivos de estilo
+
+bootstrap.css: static\network\vendor\bootstrap\css
+bootstrap.min.css:  static\network\vendor\bootstrap\css
+bootstrap.bundle.js: static\network\vendor\bootstrap\js
+bootstrap.bundle.min.js: network\vendor\bootstrap\js
+styles.css: static\network\css
 
 Recuerda que el código y comentarios del mismo debe estar en ingles 
 pero tus instrucciones tienen que estar en castellano así lo entiendo 
 yo (no entiendo ingles) y el código lo entiende el instructor que es de USA 
+
+La idea es dejar el estilo lo más parecido a twitter utilizando siempre que se pueda clases de bootstrap y lo que no se puede hacer con css 
+
+Estas son las especificaciones:

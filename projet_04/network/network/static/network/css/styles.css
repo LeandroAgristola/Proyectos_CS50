@@ -1,4 +1,52 @@
+body {
+    background-color: #000; /* Black background */
+    color: #fff; /* White text */
+    font-family: 'Lato', sans-serif;
+}
 
-.container-fluid {
-    max-width: 100vw;
+.navbar {
+    background-color: #000; /* Ensure navbar matches background */
+}
+
+.navbar .nav-link {
+    color: #fff;
+    font-weight: 500;
+}
+
+.navbar .nav-link:hover {
+    color: #ccc;
+}
+
+.container {
+    max-width: 960px;
+}
+
+.card {
+    border-radius: 10px;
+}
+
+.left-panel {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center elements horizontally */
+    text-align: center;
+}
+
+.btn-outline-light:hover {
+    background-color: #fff;
+    color: #000;
+}
+
+.search-bar .form-control {
+    border-radius: 20px 0 0 20px;
+    padding: 10px;
+}
+
+.search-bar .btn {
+    border-radius: 0 20px 20px 0;
+}
+
+.search-bar .input-group {
+    max-width: 500px;
+    width: 100%;
 }
