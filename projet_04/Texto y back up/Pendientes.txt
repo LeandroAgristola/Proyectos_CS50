@@ -67,7 +67,7 @@ Diseño:
 *Los datos del panel lateral izquierdo deben tener un estilo igual a twitter con un hover redondeado grisaseo cada dato tiene un boton con los  border redondeados
 *Los datos de fecha deben tener un color blanco pero mas suave que el resto del texto para diferenciar
 *El boton de post tiene que estar a la derecha como twitter
-El boton de like debe ser un corazon que se pone en rojo cuando esta like y en transparente cuando esta unlike
+*El boton de like debe ser un corazon que se pone en rojo cuando esta like y en transparente cuando esta unlike
 
 adaptar fomrato de index.html a following.html
 Ajustar formularios deben estar centralizados en la pantalla con el logo y el nombre de la pagina en el medio en la parte superior
@@ -105,13 +105,6 @@ Para el estilo vamos a utilizar estilos de bootstrap y CSS.
 
 Estas son las especificaciones:
 
-Estas son las ubicaciones de los archivos de estilo
-
-bootstrap.css: static\network\vendor\bootstrap\css
-bootstrap.min.css:  static\network\vendor\bootstrap\css
-bootstrap.bundle.js: static\network\vendor\bootstrap\js
-bootstrap.bundle.min.js: network\vendor\bootstrap\js
-styles.css: static\network\css
 
 Recuerda que el código y comentarios del mismo debe estar en ingles 
 pero tus instrucciones tienen que estar en castellano así lo entiendo 

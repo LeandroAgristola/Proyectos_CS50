@@ -3,6 +3,7 @@ document.addEventListener("DOMContentLoaded", () => {
         button.onclick = () => {
             const postId = button.dataset.postId;
             const csrfToken = document.querySelector('meta[name="csrf-token"]').content;
+
             fetch(`/toggle_like/${postId}/`, {
                 method: "POST",
                 headers: {
@@ -15,7 +16,15 @@ document.addEventListener("DOMContentLoaded", () => {
                 if (data.error) {
                     console.error(data.error);
                 } else {
-                    button.innerText = data.liked ? "Unlike" : "Like";
+                    // Actualiza el ícono según el estado del 'like'
+                    const icon = button.querySelector("i");
+                    if (icon) {
+                        icon.classList.toggle("bi-heart-fill", data.liked);
+                        icon.classList.toggle("bi-heart", !data.liked);
+                        icon.classList.toggle("text-danger", data.liked);
+                    }
+
+                    // Actualiza el contador de likes
                     const likeCount = document.querySelector(`.like-count[data-post-id='${postId}']`);
                     if (likeCount) {
                         likeCount.innerText = data.like_count;
@@ -26,7 +35,6 @@ document.addEventListener("DOMContentLoaded", () => {
         };
     });
 });
-
 
 // Helper function to get CSRF token
 function getCSRFToken() {

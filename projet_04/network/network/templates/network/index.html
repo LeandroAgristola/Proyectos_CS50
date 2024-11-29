@@ -29,17 +29,20 @@
                 {% endif %}
             </h5>
             <p class="card-text post-content" data-post-id="{{ post.id }}">{{ post.content }}</p>
-            <p class="card-text">
-                <span class="like-count" data-post-id="{{ post.id }}">{{ post.like_count }}</span> likes
-            </p>
-            
-            <!-- Like Button -->
-            <button 
-                class="btn like-btn" 
-                data-post-id="{{ post.id }}" 
-                data-liked="{{ post.is_liked_by_user }}">
-                <i class="bi {% if post.is_liked_by_user %}bi-heart-fill text-danger{% else %}bi-heart{% endif %}"></i>
-            </button>
+            <div class="d-flex align-items-center">
+                                <!-- Like Button -->
+                <button 
+                    class="btn like-btn" 
+                    data-post-id="{{ post.id }}" 
+                    data-liked="{{ post.is_liked_by_user }}">
+                    <i class="bi {% if post.is_liked_by_user %}bi-heart-fill text-danger{% else %}bi-heart{% endif %}"></i>
+                </button>
+                
+                <p class="card-text" style="color: rgba(255, 255, 255, 0.6);">
+                    <span class="like-count" data-post-id="{{ post.id }}">{{ post.like_count }}</span> likes
+                </p>
+                
+            </div>
         </div>
     </div>
     {% endfor %}

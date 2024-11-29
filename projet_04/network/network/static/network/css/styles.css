@@ -116,8 +116,6 @@ a {
     background-color: #fff;
     color: #000;
 }
-
-
 .search-bar .form-control {
     background-color: #d3d3d3; 
     color: #000; 
@@ -149,21 +147,24 @@ a {
 }
 
 .like-btn {
-    background: transparent;
+    background: none;
     border: none;
-    color: white;
+    cursor: pointer;
+    padding: 0px 20px 0px 0px;
+    display: inline-flex;
+    align-items: center;
+}
+
+.like-btn i {
     font-size: 1.5rem;
-    transition: color 0.3s;
+    color: #6c757d; 
+    transition: transform 0.3s ease, color 0.3s ease-in-out;
 }
 
-.like-btn .bi-heart {
-    color: rgba(255, 255, 255, 0.5); /* Transparente por defecto */
+.like-btn i.text-danger {
+    color: #ff4d4d;
 }
 
-.like-btn .bi-heart-fill {
-    color: #ff4d4d; /* Rojo para estado "like" */
-}
-
-.like-btn:hover .bi-heart {
-    color: rgba(255, 255, 255, 0.8); /* Cambia en hover */
+.like-btn:hover i {
+    transform: scale(1.2);
 }
