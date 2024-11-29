@@ -22,7 +22,7 @@
             <h5 class="card-title d-flex align-items-center">
                 <img src="{{ post.user.profile_picture|profile_picture_or_default }}" alt="Profile Picture" class="rounded-circle me-2" width="40" height="40">
                 <a href="{% url 'profile' post.user.username %}" class="text-white me-2">{{ post.user.username }}</a>
-                <span class="text-muted small">{{ post.created_at|date:"d M Y H:i" }}</span>
+                <span class="date-text" >{{ post.created_at|date:"d M Y H:i" }}</span>
                 <!-- Edit Button -->
                 {% if post.user == user %}
                     <button class="btn btn-outline-light btn-sm edit-btn" data-post-id="{{ post.id }}">Edit</button>

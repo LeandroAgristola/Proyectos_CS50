@@ -1,11 +1,14 @@
 body {
-    background-color: #000; /* Black background */
-    color: #fff; /* White text */
+    background-color: #000; 
+    color: #fff; 
     font-family: 'Lato', sans-serif;
+}
+a {
+    text-decoration: none;
 }
 
 .navbar {
-    background-color: #000; /* Ensure navbar matches background */
+    background-color: #000; 
 }
 
 .navbar .nav-link {
@@ -21,15 +24,92 @@ body {
     max-width: 960px;
 }
 
+.hover-bold:hover {
+    font-weight: bold;
+}
+
 .card {
     border-radius: 10px;
+    border: none;
+}
+
+.logo-link {
+    color: inherit; /* Mantiene el color actual del texto */
+    margin-bottom: 20px;
+}
+
+.edit-btn{
+    display: block;
+    width: 100%;
+    color: #ffffff;
+    background-color: #79797979; 
+    border-radius: 8px;
+    border: none;
+    width: 80px;
+    transition: background-color 0.3s, color 0.3s;
+}
+.edit-btn:hover{
+    background-color: #53535373; 
+    color: #ffffff; 
+}
+
+.date-text {
+    color: rgba(255, 255, 255, 0.6);
+    font-size:medium;
+    padding: 0px 20px 0px;
+}
+
+.btn-primary{
+    width: 100px;
+    background-color: rgb(23, 156, 240);
+    border: none;
+    font-weight: bold;
+}
+
+.btn-primary:hover{
+    background-color: rgb(22, 132, 201);
 }
 
 .left-panel {
     display: flex;
     flex-direction: column;
-    align-items: center; /* Center elements horizontally */
+    align-items: center; 
     text-align: center;
+}
+
+.left-panel .menu a {
+    display: block;
+    width: 100%;
+    padding: 10px 20px;
+    margin: 5px 0;
+    color: #ffffff;
+    background-color: #79797979; 
+    border-radius: 8px;
+    width: 150px;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.left-panel .menu a:hover {
+    background-color: #53535373; 
+    color: #ffffff; 
+}
+
+.left-panel .btn {
+    display: inline-block;
+    width: auto;
+    padding: 10px 20px;
+    margin: 5px 0;
+    color: #ffffff;
+    background-color: #79797979; 
+    border: none;
+    border-radius: 8px; 
+    width: 150px;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.left-panel .btn:hover {
+    background-color: #53151573; 
+    color: #ffffff; 
 }
 
 .btn-outline-light:hover {
@@ -37,16 +117,53 @@ body {
     color: #000;
 }
 
+
 .search-bar .form-control {
-    border-radius: 20px 0 0 20px;
+    background-color: #d3d3d3; 
+    color: #000; 
+    border: none; 
+    border-radius: 4; 
     padding: 10px;
+    width: 70%; 
+}
+
+.search-bar .form-control::placeholder {
+    color:#555; 
 }
 
 .search-bar .btn {
-    border-radius: 0 20px 20px 0;
+    background-color: #d3d3d3;
+    color: #000; 
+    border: none; 
+    padding: 10px 15px;
 }
 
 .search-bar .input-group {
     max-width: 500px;
     width: 100%;
+}
+
+.search-bar .btn:disabled {
+    color: #555; 
+    background-color: #bcbcbc; 
+}
+
+.like-btn {
+    background: transparent;
+    border: none;
+    color: white;
+    font-size: 1.5rem;
+    transition: color 0.3s;
+}
+
+.like-btn .bi-heart {
+    color: rgba(255, 255, 255, 0.5); /* Transparente por defecto */
+}
+
+.like-btn .bi-heart-fill {
+    color: #ff4d4d; /* Rojo para estado "like" */
+}
+
+.like-btn:hover .bi-heart {
+    color: rgba(255, 255, 255, 0.8); /* Cambia en hover */
 }

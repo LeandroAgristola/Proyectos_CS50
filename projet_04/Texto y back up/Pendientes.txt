@@ -60,15 +60,15 @@ Diseño:
 *panel lateral nombre de perfil y logaut
 *panel superiro all post, for you
 *organizar informacion de la pagina como twitter
-El nombre de usuario deberia llevarnos a la vista del perfil del usuario (funcionalidad que perdimos en tus modificaciones)
-Los datos del panel lateral izquierdo deben tener un estilo igual con un hover redondeado grisaseo
-Lo datos de fecha y hora del post deben estar al lado del nombre de usuario con un separacion para no quedar tan juntos 
-Los datos de fecha deben tener un color blanco pero mas suave que el resto del texto para diferenciar
-La barra de busqueda debe ser mas grande con lo bordes mas redondeados con el boton de busqueda incorporado al la barra
-El boton de post tiene que estar a la derecha como twitter
-
-
+*El nombre de usuario deberia llevarnos a la vista del perfil del usuario (funcionalidad que perdimos en tus modificaciones)
+*Lo datos de fecha y hora del post deben estar al lado del nombre de usuario con un separacion para no quedar tan juntos 
+*La barra de busqueda debe ser mas grande con lo bordes mas redondeados con el boton de busqueda incorporado al la barra
+*La barra de busqueda no debe tener bordes y el color de la misma debe ser gris claro
+*Los datos del panel lateral izquierdo deben tener un estilo igual a twitter con un hover redondeado grisaseo cada dato tiene un boton con los  border redondeados
+*Los datos de fecha deben tener un color blanco pero mas suave que el resto del texto para diferenciar
+*El boton de post tiene que estar a la derecha como twitter
 El boton de like debe ser un corazon que se pone en rojo cuando esta like y en transparente cuando esta unlike
+
 adaptar fomrato de index.html a following.html
 Ajustar formularios deben estar centralizados en la pantalla con el logo y el nombre de la pagina en el medio en la parte superior
 
@@ -99,7 +99,11 @@ Este proyecto consiste en diseñar un sitio web de red social que permita a los 
 
 Vamos a continuar con el estilo del sitio
 
+La idea es dejar el estilo lo más parecido a twitter utilizando siempre que se pueda clases de bootstrap y lo que no se puede hacer con css 
+
 Para el estilo vamos a utilizar estilos de bootstrap y CSS.
+
+Estas son las especificaciones:
 
 Estas son las ubicaciones de los archivos de estilo
 
@@ -113,6 +117,6 @@ Recuerda que el código y comentarios del mismo debe estar en ingles
 pero tus instrucciones tienen que estar en castellano así lo entiendo 
 yo (no entiendo ingles) y el código lo entiende el instructor que es de USA 
 
-La idea es dejar el estilo lo más parecido a twitter utilizando siempre que se pueda clases de bootstrap y lo que no se puede hacer con css 
 
-Estas son las especificaciones:
+
+
