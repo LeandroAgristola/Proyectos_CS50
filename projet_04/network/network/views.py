@@ -83,6 +83,12 @@ def profile_view(request, username):
     posts = profile_user.posts.all().order_by('-created_at')
     is_following = request.user.is_authenticated and profile_user.followers.filter(id=request.user.id).exists()
 
+    # Agregar lógica para los "likes"
+    if request.user.is_authenticated:
+        for post in posts:
+            post.is_liked_by_user = post.likes.filter(id=request.user.id).exists()
+
+    # Manejo de seguir/dejar de seguir al usuario
     if request.method == "POST" and request.user.is_authenticated:
         if request.user != profile_user:
             if is_following:

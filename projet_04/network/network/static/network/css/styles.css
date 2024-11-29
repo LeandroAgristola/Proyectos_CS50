@@ -107,9 +107,29 @@ a {
     transition: background-color 0.3s, color 0.3s;
 }
 
+.follow-btn{
+    display: inline-block;
+    width: auto;
+    margin: 5px 0;
+    color: #ffffff;
+    background-color: #79797979; 
+    border: none;
+    border-radius: 15px; 
+    width: 100px;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.follow-btn:hover{
+    background-color: #c0c0c079; 
+    font-weight: bold;
+
+}
+
+
 .left-panel .btn:hover {
-    background-color: #53151573; 
-    color: #ffffff; 
+    background-color: #ff9b9b; 
+    color: #880000; 
+    font-weight: bold;
 }
 
 .btn-outline-light:hover {

@@ -16,7 +16,6 @@ document.addEventListener("DOMContentLoaded", () => {
                 if (data.error) {
                     console.error(data.error);
                 } else {
-                    // Actualiza el ícono según el estado del 'like'
                     const icon = button.querySelector("i");
                     if (icon) {
                         icon.classList.toggle("bi-heart-fill", data.liked);
@@ -24,7 +23,6 @@ document.addEventListener("DOMContentLoaded", () => {
                         icon.classList.toggle("text-danger", data.liked);
                     }
 
-                    // Actualiza el contador de likes
                     const likeCount = document.querySelector(`.like-count[data-post-id='${postId}']`);
                     if (likeCount) {
                         likeCount.innerText = data.like_count;
