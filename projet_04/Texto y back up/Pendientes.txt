@@ -70,8 +70,8 @@ Diseño:
 *El boton de like debe ser un corazon que se pone en rojo cuando esta like y en transparente cuando esta unlike
 *adaptar fomrato de index.html a following.html
 *adaptar fomrato de index.html a profile
+*adaptar fomrato de index.html a resultado de busqueda
 
-adaptar fomrato de index.html a resultado de busqueda
 Ajustar formularios deben estar centralizados en la pantalla con el logo y el nombre de la pagina en el medio en la parte superior
 
 
