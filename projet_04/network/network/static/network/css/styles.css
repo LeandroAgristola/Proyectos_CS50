@@ -41,6 +41,7 @@ a {
 .edit-btn{
     display: block;
     width: 100%;
+    margin: 0px 5px 5px 0px;
     color: #ffffff;
     background-color: #79797979; 
     border-radius: 8px;
@@ -48,6 +49,11 @@ a {
     width: 80px;
     transition: background-color 0.3s, color 0.3s;
 }
+.edit-btn:hover{
+    background-color: #53535373; 
+    color: #ffffff; 
+}
+
 .edit-btn:hover{
     background-color: #53535373; 
     color: #ffffff; 
@@ -124,7 +130,6 @@ a {
     font-weight: bold;
 
 }
-
 
 .left-panel .btn:hover {
     background-color: #ff9b9b; 
