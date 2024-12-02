@@ -1,0 +1,49 @@
+Funcionalidad:
+
+
+Diseño:
+
+Bien continuando con el proyecto de Programación web de CS50 con Python y JavaScript de havard academy, el cual me aporta todos los archivos para iniciar, el instructor me informa esto :
+
+Este proyecto consiste en diseñar un sitio web de red social que permita a los usuarios realizar publicaciones, seguir a otros usuarios y dar “me gusta” a las publicaciones.
+
+Vamos a continuar con el estilo del sitio
+
+Te aporto mis archivos, por favor analízalos todos con detalle y entregame una solución en base a mis archivos, no supongas, no me des ejemplos del estilo "asi deberia verse" analiza y entrega una solución en base a los requerimientos 
+
+#-----forms.py:
+
+#-----.html
+
+#-----inbox.js:
+
+#-----urls.py:
+
+#-----views.py:
+
+#-----models.py:
+
+Bien continuando con el proyecto de Programación web de CS50 con Python y JavaScript de havard academy, el cual me aporta todos los archivos para iniciar, el instructor me informa esto :
+
+Este proyecto consiste en diseñar un sitio web de red social que permita a los usuarios realizar publicaciones, seguir a otros usuarios y dar “me gusta” a las publicaciones.
+
+Vamos a continuar con el estilo del sitio
+
+La idea es dejar el estilo lo más parecido a twitter utilizando siempre que se pueda clases de bootstrap y lo que no se puede hacer con css 
+
+Para el estilo vamos a utilizar estilos de bootstrap y CSS.
+
+Estas son las especificaciones:
+
+
+Recuerda que el código y comentarios del mismo debe estar en ingles 
+pero tus instrucciones tienen que estar en castellano así lo entiendo 
+yo (no entiendo ingles) y el código lo entiende el instructor que es de USA 
+
+
+
+Bien continuando con el proyecto de Programación web de CS50 con Python y JavaScript de havard academy, el cual me aporta todos los archivos para iniciar, el instructor me informa esto :
+
+Este proyecto consiste en diseñar un sitio web de red social que permita a los usuarios realizar publicaciones, seguir a otros usuarios y dar “me gusta” a las publicaciones.
+
+Necesito que los archivos que te pase le agregues comentarios en inglés para facilitarle al instructor que entienda las funcionalidades de mi proyecto.

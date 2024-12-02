@@ -11,9 +11,10 @@ from django.views.decorators.csrf import csrf_exempt
 import json
 from django.db.models import Q, Count
 
+# View for the main page. Displays all posts and handles the creation of new posts.
 @login_required
 def index(request):
-    
+    # Handle new post creation
     if request.method == "POST" and request.user.is_authenticated:
         form = PostForm(request.POST)
         if form.is_valid():
@@ -21,11 +22,13 @@ def index(request):
             new_post.user = request.user
             new_post.save()
     
+    # Fetch and paginate posts
     posts = Post.objects.all().order_by('-created_at')
     paginator = Paginator(posts, 10)  
     page_number = request.GET.get('page')
     page_obj = paginator.get_page(page_number)
 
+    # Check if the user liked each post
     for post in page_obj:
         post.is_liked_by_user = request.user in post.likes.all()
 
@@ -34,9 +37,10 @@ def index(request):
         "posts": page_obj,
     })
 
+# View to handle user login.
 def login_view(request):
     if request.method == "POST":
-
+        # Authenticate the user
         username = request.POST["username"]
         password = request.POST["password"]
         user = authenticate(request, username=username, password=password)
@@ -51,11 +55,12 @@ def login_view(request):
     else:
         return render(request, "network/login.html")
 
-
+# View to log out the current user.
 def logout_view(request):
     logout(request)
     return HttpResponseRedirect(reverse("index"))
 
+# View to handle user registration.
 def register(request):
     if request.method == "POST":
         form = CustomUserCreationForm(request.POST, request.FILES)
@@ -78,17 +83,18 @@ def register(request):
         form = CustomUserCreationForm()
         return render(request, "network/register.html", {"form": form})
 
+# View for user profile pages. Shows posts and handles follow/unfollow actions.
 def profile_view(request, username):
     profile_user = get_object_or_404(User, username=username)
     posts = profile_user.posts.all().order_by('-created_at')
     is_following = request.user.is_authenticated and profile_user.followers.filter(id=request.user.id).exists()
 
-    # Agregar lógica para los "likes"
+    # Check if the user liked each post
     if request.user.is_authenticated:
         for post in posts:
             post.is_liked_by_user = post.likes.filter(id=request.user.id).exists()
 
-    # Manejo de seguir/dejar de seguir al usuario
+    # Handle follow/unfollow actions
     if request.method == "POST" and request.user.is_authenticated:
         if request.user != profile_user:
             if is_following:
@@ -105,12 +111,13 @@ def profile_view(request, username):
         "following_count": profile_user.following.count(),
     })
 
+# View to display posts from users the current user is following.
 @login_required
 def following_view(request):
     following_users = request.user.following.all()
-
     posts = Post.objects.filter(user__in=following_users).order_by('-created_at')
 
+    # Check if the user liked each post
     for post in posts:
         post.is_liked_by_user = post.likes.filter(id=request.user.id).exists()
         
@@ -122,6 +129,7 @@ def following_view(request):
         "posts": page_obj,
     })
 
+# View to edit an existing post.
 @login_required
 def edit_post(request, post_id):
     try:
@@ -141,6 +149,7 @@ def edit_post(request, post_id):
 
     return JsonResponse({"error": "Invalid request method."}, status=400)
 
+# View to like or unlike a post.
 @login_required
 def toggle_like(request, post_id):
     try:
@@ -163,6 +172,7 @@ def toggle_like(request, post_id):
 
     return JsonResponse({"error": "Invalid request method."}, status=400)
 
+# View to search for posts and users.
 @login_required
 def search(request):
     query = request.GET.get('q', '')
