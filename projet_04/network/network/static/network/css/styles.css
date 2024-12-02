@@ -193,3 +193,8 @@ a {
 .like-btn:hover i {
     transform: scale(1.2);
 }
+
+.rounded-circle {
+    object-fit: cover; 
+    object-position: center;
+}
