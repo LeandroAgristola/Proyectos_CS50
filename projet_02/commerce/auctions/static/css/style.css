@@ -1,4 +1,3 @@
-/* styles.css */
 header, nav {
     border-bottom: 1px solid #ddd;
 }
@@ -40,23 +39,23 @@ header .input-group button {
 }
 
 .card {
-    height: 100%; /* Asegura que todas las tarjetas tengan la misma altura */
+    height: 100%;
 }
 
 .card-img-top {
-    padding: 5px; /* Padding entre la imagen y el borde de la tarjeta */
-    border-radius: 0; /* Opcional: elimina el borde redondeado */
+    padding: 5px; 
+    border-radius: 0;
 }
 
 .img-fluid {
-    object-fit: cover; /* Asegura que la imagen se ajuste sin distorsionarse */
-    height: 200px; /* Altura fija para las imágenes */
+    object-fit: cover; 
+    height: 200px;
 }
 
 .card-body {
     display: flex;
     flex-direction: column;
-    justify-content: space-between; /* Espacia el contenido dentro de la tarjeta */
+    justify-content: space-between;
 }
 
 .mt-auto .d-flex .justify-content-between .btn{
@@ -64,17 +63,11 @@ header .input-group button {
 
 }
 
-.btn {
-    flex: 1; /* Asegura que ambos botones ocupen el mismo espacio */
-}
-
-/* Estilos personalizados para formularios */
 .form-group {
-    margin-bottom: 1rem;  /* Ajusta el espaciado entre campos según lo desees */
+    margin-bottom: 1rem;
 }
 
 
-/* Estilos personalizados para formularios de subasta */
 .form-group label {
     font-weight: bold;
     color: #555;
