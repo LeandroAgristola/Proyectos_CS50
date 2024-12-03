@@ -1,24 +1,24 @@
 
 <!DOCTYPE html>
-<html lang="es-ES"> <!--...-->
-	<head> <!--Metadatos OBLIGATORIA-->
+<html lang="es-ES"> 
+	<head> 
 		{% load static %}
 		<meta charset="utf-8"> 
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<meta name="description" content="Somos expertos en desarrollo inmobiliario, con mas de 20 años de experiencia en el mercado">  <!--Agragar Descripcion-->
-		<link rel="preconnect" href="https://fonts.googleapis.com"><!-- estilo fuente-->
-		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> <!-- estilo fuente-->
-		<link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet"> <!-- estilo fuente-->
+		<meta name="description" content="Somos expertos en desarrollo inmobiliario, con mas de 20 años de experiencia en el mercado"> 
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> 
+		<link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet"> 
 
 		{% block css %}
-		<link rel="stylesheet" type="text/css" href="{% static 'vendor/bootstrap/css/bootstrap.css' %}">  <!--Bootstrap CSS -->
-		<link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">  <!-- Archivo de estilos -->
+		<link rel="stylesheet" type="text/css" href="{% static 'vendor/bootstrap/css/bootstrap.css' %}">  
+		<link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">  
 		{% endblock %}
 
-		<link rel="icon" type="image/x-icon" href="{% static 'logo/favicon.ico' %}"><!--Icono-->
+		<link rel="icon" type="image/x-icon" href="{% static 'logo/favicon.ico' %}">
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" 
 		integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" 
-		crossorigin="anonymous" referrerpolicy="no-referrer" /> <!--link del CDM de los iconos-->
+		crossorigin="anonymous" referrerpolicy="no-referrer" /> 
 		<title>{% block title %}Realestate{% endblock %}</title>
 	</head>
 	<body>
@@ -63,12 +63,11 @@
 
 		</header>
 
-		<!--Contenido Dinamico-->
 		{% block content %}
 
 		{% endblock %}
 		
-		<footer class="text-dark py-2"> <!-- Fondo y padding del footer -->
+		<footer class="text-dark py-2"> 
 			<div class="container-fluid">
 				<div class="row">
 					<div class="col d-flex justify-content-around mb-2">
@@ -98,16 +97,12 @@
 
 
 		{% block scripts %}
-		<!-- Carga de scripts -->
 		<script>
 			document.addEventListener('DOMContentLoaded', function () {
-			  // Selecciona todos los enlaces dentro del menú desplegable
 			  const navLinks = document.querySelectorAll('.navbar-nav .nav-link');
-			  
-			  // Añade un event listener a cada enlace
+
 			  navLinks.forEach(link => {
 				link.addEventListener('click', () => {
-				  // Cierra el menú desplegable si está abierto
 				  const navbarCollapse = document.getElementById('menu');
 				  const bsCollapse = new bootstrap.Collapse(navbarCollapse, { toggle: false });
 				  bsCollapse.hide();

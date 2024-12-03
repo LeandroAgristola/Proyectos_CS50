@@ -1,9 +1,9 @@
 from django.contrib import admin
-from .models import Desarrollo
+from .models import development
 
 # Register your models here.
 
-class desarrolloAdmin(admin.ModelAdmin):
+class developmentAdmin(admin.ModelAdmin):
     readonly_fields=('created','updated') 
 
-admin.site.register(Desarrollo, desarrolloAdmin)
+admin.site.register(development, developmentAdmin)

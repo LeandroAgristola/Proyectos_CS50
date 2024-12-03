@@ -2,17 +2,17 @@ from django.db import models
 
 # Create your models here.
 
-class Desarrollo(models.Model):
-    titulo = models.CharField(max_length=50)
-    contenido = models.CharField(max_length=150)
-    imagen = models.ImageField(upload_to='desarrollos')  
-    brochurePaper = models.FileField(upload_to='desarrollos_pdfs/')
+class development(models.Model):
+    title = models.CharField(max_length=50)
+    content = models.CharField(max_length=150)
+    image = models.ImageField(upload_to='developments')  
+    brochurePaper = models.FileField(upload_to='developments_pdfs/')
     created = models.DateTimeField(auto_now_add=True)  
     updated = models.DateTimeField(auto_now=True) 
 
     class Meta:
-        verbose_name = 'desarrollo' 
-        verbose_name_plural = 'desarrollos' 
+        verbose_name = 'development' 
+        verbose_name_plural = 'developments' 
 
     def __str__(self):
-        return self.titulo
+        return self. title

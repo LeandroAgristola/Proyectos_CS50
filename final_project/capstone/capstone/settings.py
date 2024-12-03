@@ -140,9 +140,18 @@ MESSAGE_TAGS={
 }
 
 STATIC_URL = '/static/'
-MEDIA_URL = '/media/'
-MEDIA_ROOT = BASE_DIR / 'media'
 
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+
+CSRF_TRUSTED_ORIGINS = [
+    'https://localhost:8000',
+    'http://localhost:8000',
+
+]
+
+CSRF_COOKIE_SECURE = True
 
 #EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"  
 #EMAIL_HOST = "smtp-mail.outlook.com" 

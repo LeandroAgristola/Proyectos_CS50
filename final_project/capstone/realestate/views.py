@@ -1,27 +1,26 @@
 from django.shortcuts import render
 from django.http import JsonResponse
-from .forms import FormularioContacto
+from .forms import contactForm
 from django.core.mail import EmailMessage
-from .models import Desarrollo
+from .models import development
 
 def home(request):
-    desarrollos = Desarrollo.objects.all()
+    developments = development.objects.all()
 
     if request.method == "POST":
-        formulario_contacto = FormularioContacto(data=request.POST)
-        if formulario_contacto.is_valid():
-            nombre = formulario_contacto.cleaned_data['nombre']
-            apellido = formulario_contacto.cleaned_data['apellido']
-            telefono = formulario_contacto.cleaned_data['telefono']
-            email = formulario_contacto.cleaned_data['email']
-            consulta = formulario_contacto.cleaned_data['consulta']
+        contact_Form = contactForm(data=request.POST)
+        if contact_Form.is_valid():
+            name = contact_Form.cleaned_data['name']
+            lastname = contact_Form.cleaned_data['apellido']
+            phonenumber = contact_Form.cleaned_data['phonenumber']
+            email = contact_Form.cleaned_data['email']
+            consultation = contact_Form.cleaned_data['onsultation']
 
-            # Enviar email
             email_message = EmailMessage(
-                "Mensaje desde App Django",
-                f"Nombre: {nombre} {apellido}\nTeléfono: {telefono}\nEmail: {email}\nConsulta: {consulta}",
-                "leo_91_166@hotmail.com",  # Tu dirección de correo (debe coincidir con EMAIL_HOST_USER)
-                ["leo_91_166@hotmail.com"],  # Dirección a la que llega el correo
+                "Message from Django App Real Estate",
+                f"Name: {name} {lastname}\nPhonenumber: {phonenumber}\nEmail: {email}\nConsultation: {consultation}",
+                "", 
+                [""], 
                 reply_to=[email]
             )
 
@@ -29,24 +28,23 @@ def home(request):
                 email_message.send()
                 return JsonResponse({'status': 'ok'}, status=200)
             except Exception as e:
-                print(f"Error al enviar el correo: {e}")
+                print(f"Error sending email: {e}")
                 return JsonResponse({'status': 'error', 'message': str(e)}, status=500)
         else:
-            # Enviar errores de validación al frontend en formato JSON
-            errores = formulario_contacto.errors.as_json()
+            errores = contact_Form.errors.as_json()
             return JsonResponse({'status': 'invalid', 'errors': errores}, status=400)
     
-    formulario_contacto = FormularioContacto()
-    return render(request, 'realestateapp/home.html', {
-        'desarrollos': desarrollos, 
-        'miformulario': formulario_contacto
+    contact_Form = contactForm()
+    return render(request, 'realestate/home.html', {
+        'development': developments, 
+        'myform': contact_Form
     })
 
-def mobileViviendas(request):
-    return render(request, 'realestateapp/mobileViviendas.html')
+def mobileHousing(request):
+    return render(request, 'realestate/mobileHousing.html')
 
-def mobileEdificios(request):
-    return render(request, 'realestateapp/mobileEdificios.html')
+def mobileBuildings(request):
+    return render(request, 'realestateapp/mobileBuildings.html')
 
-def mobileIndustrias(request):
-    return render(request, 'realestateapp/mobileIndustrias.html')
+def mobileIndustries(request):
+    return render(request, 'realestateapp/mobileIndustries.html')
