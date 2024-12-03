@@ -121,8 +121,6 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
 
-STATIC_URL = 'static/'
-
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
@@ -141,3 +139,18 @@ MESSAGE_TAGS={
     error_message.ERROR:'danger',
 }
 
+STATIC_URL = '/static/'
+MEDIA_URL = '/media/'
+MEDIA_ROOT = BASE_DIR / 'media'
+
+
+#EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"  
+#EMAIL_HOST = "smtp-mail.outlook.com" 
+#EMAIL_USE_TLS = True  # Utilizar TLS
+#EMAIL_PORT = 587  # Puerto SMTP para TLS
+#EMAIL_HOST_USER='leo_91_166@hotmail.com' 
+#EMAIL_HOST_PASSWORD='paozgadndgittrdq' 
+
+
+#LOGIN_URL = '/authentication/logear/' 
+#LOGIN_REDIRECT_URL = 'home' 

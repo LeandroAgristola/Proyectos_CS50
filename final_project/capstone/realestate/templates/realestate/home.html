@@ -1,0 +1,182 @@
+{% extends "realestateapp/base.html" %}
+
+{% load static %}
+
+{% block content %}
+
+		<section id="hero">
+			<div class="container">
+				<h1>Nuestros Desarrollos</h1>
+				<div class="container" id="containerCarusel">
+					<div class="carousel slide" id="carousel1" data-bs-ride="carousel">
+						<ul class="carousel-indicators" style="list-style-type:none;">
+							{% for desarrollo in desarrollos %}
+								<li data-bs-target="#carousel1" data-bs-slide-to="{{ forloop.counter0 }}" class="{% if forloop.first %}active{% endif %}"></li>
+							{% endfor %}
+						</ul>
+		
+						<div class="carousel-inner">
+							{% for desarrollo in desarrollos %}
+								<div class="carousel-item {% if forloop.first %}active{% endif %}">
+									<div class="card">
+										<img class="card-img-top" src="{{ desarrollo.imagen.url }}" alt="Imagen de {{ desarrollo.titulo }}">
+										<div class="card-body">
+											<h4 class="card-title">{{ desarrollo.titulo }}</h4>
+											<p class="card-text">{{ desarrollo.contenido }}</p>
+										</div>
+										<div class="card-footer">
+											<a href="{{ desarrollo.brochurePaper.url }}" target="_blank" class="btn btn-primary">Brochure Paper</a>
+										</div>
+									</div>
+								</div>
+							{% endfor %}
+						</div>
+		
+						<a class="carousel-control-prev" href="#carousel1" data-bs-slide="prev">
+							<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+							<span class="sr-only"></span>
+						</a>
+		
+						<a class="carousel-control-next" href="#carousel1" data-bs-slide="next">
+							<span class="carousel-control-next-icon" aria-hidden="true"></span>
+							<span class="sr-only"></span>
+						</a>
+					</div>
+				</div>
+			</div>
+		</section>
+	
+		<section id="nosotros"> <!-- Sección Nosotros -->
+			<div id="nosotros-container" class="container bg-white d-flex align-items-center justify-content-center" >
+				<div class="row w-100">
+					<!-- Video a la izquierda -->
+					<div class="col-md-6 d-flex justify-content-center align-items-center">
+						<video id="myVideo" class="w-100" autoplay loop muted>
+							<source src="{% static 'img/Video.mp4' %}" type="video/mp4">
+							Su navegador no soporta la etiqueta de vídeo.
+						</video>
+					</div>
+					<!-- Texto a la derecha -->
+					<div class="col-md-6 d-flex justify-content-center align-items-center">
+						<div class="textonosotros p-4">
+							<h2>Sobre <br> <span class="color-acento">Realestate</span></h2> <!-- Título de la sección Nosotros -->
+							<p>
+								A través de la creación, inversión y gerenciamiento de las mismas, buscamos aportar valor agregado y seguir transformando las industrias a las que pertenecemos, 
+								mejorando la experiencia de los clientes, dándoles un servicio diferencial y generando retornos a nuestros inversores. <br><br>
+								Fomentamos una cultura de ética, sin egos, sinérgica y profesional; de puertas abiertas, creativa y de 
+								pensamientos distintos; con plena confianza y delegación en nuestra gente; estableciendo relaciones verdaderas y de largo plazo.
+							</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<section id="serie"><!--seccion de tarjetas-->
+			<div class="contenedor">
+				<h2>Serie <span class="color-acento">Realestate</span></h2> <!--Titulo de la seccion de tarjetas -->
+					<div class="datos_empresa"> <!--Este div permite darle estilo al sub menu-->
+						<div class="submenu"><!--tarjeta 1-->
+							<h3>Viviendas</h3> <!-- Tarjeta viviendas-->
+							<p>Un producto único, que busca generar una experiencia diferente en un entorno de disfrute, contención y tranquilidad, 
+								inmerso en la naturaleza. <br>
+								Con unidades que se entregan totalmente decoradas y equipadas, con los más completos amenities y servicios, 
+								y en entornos que invitan a respirar naturaleza, disfrutar es el único resultado posible.
+							</p>
+							<a href="{% url 'mobileViviendas' %}" class="btn btn-light mt-3">+ info</a>
+						</div>
+						<div class="submenu"><!--tarjeta Edificios-->
+							<h3>Edificios</h3>
+							<p>Desarrollamos Edificio residencial Premium exclusivos. Ofrecemos la posibilidad de acceder a unidades en lista cero (al costo): 
+								a precio cerrado, sin ajustes CAC, sin comisiones inmobiliarias. Obra de bajo riesgo constructivo y financiero, con tiempos de obra cortos por 
+								contar con proyecto ya aprobado.
+							</p>
+							<a href="{% url 'mobileEdificios' %}" class="btn btn-light mt-3">+ info</a>
+						</div>
+						<div class="submenu">
+							<h3>Industria</h3><!--tarjeta industrias-->
+							<p>Somos especialistas en inmuebles industriales y contamos con un equipo de profesionales en el desarrollo y planificación de locaciones industriales
+								Aplicamos tecnologías de última generación, para cumplir con lo más alto estándares en seguridad y cuidado del medio ambiente. 
+			
+							</p>
+							<a href="{% url 'mobileIndustrias' %}" class="btn btn-light mt-3">+ info</a>
+						</div>
+					</div>
+			</div>
+		</section>
+
+		<section id="contacto" class="py-5">
+			<div class="container">
+				<div class="row">
+					<!-- Formulario a la izquierda -->
+
+					<div class="col-md-6">
+						<form id="form-contacto" method="post" autocomplete="on">
+							<h2>Contacto</h2>
+							{% csrf_token %}
+							{{ miformulario.non_field_errors }}
+							<!-- Recorrido por cada campo del formulario -->
+							{% for field in miformulario %}
+								<div class="mb-3">
+									<label for="{{ field.id_for_label }}" class="form-label">{{ field.label }}</label>
+									{{ field }}
+									{% if field.errors %}
+										<div class="alert alert-danger">
+											{{ field.errors }}
+										</div>
+									{% endif %}
+								</div>
+							{% endfor %}
+
+							<div class="d-flex align-items-center">
+								<button id="btn-enviar" type="submit" class="btn btn-primary">Enviar</button>
+								<button id="btn-cancelar" type="reset" class="btn btn-secondary ms-2">Cancelar</button>
+							</div>
+						</form>
+					</div>
+					<!-- Imagen a la derecha -->
+					<div class="col-md-6 d-flex justify-content-center align-items-center">
+						<img src="static/img/contacto.jpg" alt="Imagen de contacto" class="img-fluid">
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<!-- Modal de carga -->
+		<div class="modal fade" id="loadingModal" tabindex="-1" aria-labelledby="loadingModalLabel" aria-hidden="true">
+			<div class="modal-dialog modal-dialog-centered">
+				<div class="modal-content" style="background-color: transparent; border: none;">
+					<div class="modal-body d-flex justify-content-center align-items-center" style="height: 100px;">
+						<div class="spinner-border" role="status"> <!-- Cambia el color aquí -->
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- Modal de mensaje enviado -->
+		<div class="modal fade" id="mensajeModal" tabindex="-1" aria-labelledby="mensajeModalLabel" aria-hidden="true">
+			<div class="modal-dialog modal-dialog-centered"> <!-- Centrado verticalmente -->
+				<div class="modal-content">
+					<div class="modal-header d-flex justify-content-center">
+						<h5 class="modal-title" id="mensajeModalLabel">Mensaje Enviado</h5>
+					</div>
+					<div class="modal-body d-flex justify-content-center">
+						Su mensaje ha sido enviado exitosamente.
+					</div>
+					<div class="modal-footer d-flex justify-content-center"> <!-- Botón centrado -->
+						<button type="button" class="btn btn-primary" data-bs-dismiss="modal" aria-label="Close">Ok</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		<section id="ubicacion"> <!-- Seccion de Iframe Google Maps-->
+			<div class="container">
+				<h2>Ubicacion</h2> <!-- TiTulo-->
+				<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d817.8500541816977!2d-57.953874576704685!3d-34.921498429018776!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95a2e62e3fc93575%3A0x6ffaec3bf616e000!2sPlaza%20Moreno!5e0!3m2!1ses-419!2sar!4v1695515733925!5m2!1ses-419!2sar" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+			</div>
+		</section> <!-- Mapa -->
+
+
+		{% endblock %}
