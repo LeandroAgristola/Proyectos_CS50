@@ -11,6 +11,8 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 """
 
 from pathlib import Path
+import os
+from django.contrib.messages import constants as error_message
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -25,7 +27,7 @@ SECRET_KEY = 'django-insecure-m2k)u1b=pkms5s5*u^$5stcicfrnt19o!cyp6iethfd_e@ka4!
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -37,6 +39,10 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'crispy_forms',
+    'django_bootstrap5',
+    'crispy_bootstrap5',
+    'realestate',
 ]
 
 MIDDLEWARE = [
@@ -121,3 +127,17 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5" 
+CRISPY_TEMPLATE_PACK = "bootstrap5"
+
+APPEND_SLASH = True
+
+MESSAGE_TAGS={
+    error_message.DEBUG:'deburg',
+    error_message.INFO:'info',
+    error_message.SUCCESS:'success',
+    error_message.WARNING:'warning',
+    error_message.ERROR:'danger',
+}
+
