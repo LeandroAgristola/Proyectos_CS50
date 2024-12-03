@@ -157,8 +157,8 @@ CSRF_COOKIE_SECURE = True
 #EMAIL_HOST = "smtp-mail.outlook.com" 
 #EMAIL_USE_TLS = True  # Utilizar TLS
 #EMAIL_PORT = 587  # Puerto SMTP para TLS
-#EMAIL_HOST_USER='leo_91_166@hotmail.com' 
-#EMAIL_HOST_PASSWORD='paozgadndgittrdq' 
+#EMAIL_HOST_USER='' 
+#EMAIL_HOST_PASSWORD='' 
 
 
 #LOGIN_URL = '/authentication/logear/' 
