@@ -1,7 +1,15 @@
 Funcionalidad:
-
+Crear simulacion de envio de contacto
+Crear template de ingreso de desarrollos y usar imagen S1
+Ver si es necesario JS del video
+Agregar comentarios a los archivos
 
 Diseño:
+Ver si al apretar en localizacion nos muestra un animacion de google street view
+Crear instagram prueba
+
+
+
 
 Bien continuando con el proyecto de Programación web de CS50 con Python y JavaScript de havard academy, el cual me aporta todos los archivos para iniciar, el instructor me informa esto :
 

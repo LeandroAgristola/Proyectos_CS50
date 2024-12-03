@@ -1,16 +1,18 @@
-{% extends "realestateapp/base.html" %}
+{% extends "realestate/layout.html" %}
 
 {% load static %}
 
 {% block content %}
 
-<section id="serieMobile" style="background-image:url('/static/img/edificio.jpg');">
+<section id="serieMobile" style="background-image:url('/static/img/building.jpg');">
 	<div class="container text-center py-5" id="containerMobile">
 		<div class="card text-center text-white" id=cardMobile>
 			<div class="card-body d-flex flex-column text-center" id=card-bodyMobile>
-						<h3 class="card-title" id=card-titleMobile>Edificios</h3>
-						<p class="card-text" id=card-textMobile>Desarrollamos Edificio residencial Premium exclusivos. Ofrecemos la posibilidad de acceder a unidades en lista cero (al costo): a precio cerrado, sin ajustes CAC, sin comisiones inmobiliarias. Obra de bajo riesgo constructivo y financiero, con tiempos de obra cortos por contar con proyecto ya aprobado.</p>
-						<a href="{% url 'home' %}#serie" class="btn btn-light mt-3">Volver</a>
+						<h3 class="card-title" id=card-titleMobile>Building</h3>
+						<p class="card-text" id=card-textMobile>We develop exclusive Premium residential buildings. We offer the possibility of accessing units in zero list (at cost):
+																at a fixed price, without CAC adjustments, without real estate commissions. Work with low construction and financial risk, 
+																with short construction times due tohaving an already approved project.</p>
+						<a href="{% url 'home' %}#serie" class="btn btn-light mt-3">Return</a>
 					</div>
 				</div>
 			</div>

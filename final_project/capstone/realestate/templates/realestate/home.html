@@ -1,4 +1,4 @@
-{% extends "realestateapp/base.html" %}
+{% extends "realestate/layout.html" %}
 
 {% load static %}
 
@@ -6,26 +6,26 @@
 
 		<section id="hero">
 			<div class="container">
-				<h1>Nuestros Desarrollos</h1>
+				<h1>Our Developments</h1>
 				<div class="container" id="containerCarusel">
 					<div class="carousel slide" id="carousel1" data-bs-ride="carousel">
 						<ul class="carousel-indicators" style="list-style-type:none;">
-							{% for desarrollo in desarrollos %}
+							{% for development in developments %}
 								<li data-bs-target="#carousel1" data-bs-slide-to="{{ forloop.counter0 }}" class="{% if forloop.first %}active{% endif %}"></li>
 							{% endfor %}
 						</ul>
 		
 						<div class="carousel-inner">
-							{% for desarrollo in desarrollos %}
+							{% for development in developments %}
 								<div class="carousel-item {% if forloop.first %}active{% endif %}">
 									<div class="card">
 										<img class="card-img-top" src="{{ desarrollo.imagen.url }}" alt="Imagen de {{ desarrollo.titulo }}">
 										<div class="card-body">
-											<h4 class="card-title">{{ desarrollo.titulo }}</h4>
-											<p class="card-text">{{ desarrollo.contenido }}</p>
+											<h4 class="card-title">{{ development.title }}</h4>
+											<p class="card-text">{{ development.content }}</p>
 										</div>
 										<div class="card-footer">
-											<a href="{{ desarrollo.brochurePaper.url }}" target="_blank" class="btn btn-primary">Brochure Paper</a>
+											<a href="{{ development.brochurePaper.url }}" target="_blank" class="btn btn-primary">Brochure Paper</a>
 										</div>
 									</div>
 								</div>
@@ -46,25 +46,23 @@
 			</div>
 		</section>
 	
-		<section id="nosotros"> <!-- Sección Nosotros -->
-			<div id="nosotros-container" class="container bg-white d-flex align-items-center justify-content-center" >
+		<section id="company"> 
+			<div id="companyContainer" class="container bg-white d-flex align-items-center justify-content-center" >
 				<div class="row w-100">
-					<!-- Video a la izquierda -->
 					<div class="col-md-6 d-flex justify-content-center align-items-center">
 						<video id="myVideo" class="w-100" autoplay loop muted>
-							<source src="{% static 'img/Video.mp4' %}" type="video/mp4">
-							Su navegador no soporta la etiqueta de vídeo.
+							<source src="{% static 'img/video.mp4' %}" type="video/mp4">
+							Your browser does not support the video tag.
 						</video>
 					</div>
-					<!-- Texto a la derecha -->
 					<div class="col-md-6 d-flex justify-content-center align-items-center">
-						<div class="textonosotros p-4">
-							<h2>Sobre <br> <span class="color-acento">Realestate</span></h2> <!-- Título de la sección Nosotros -->
+						<div class="textCompany p-4">
+							<h2>About <br> <span class="accent_color">Realestate</span></h2> 
 							<p>
-								A través de la creación, inversión y gerenciamiento de las mismas, buscamos aportar valor agregado y seguir transformando las industrias a las que pertenecemos, 
-								mejorando la experiencia de los clientes, dándoles un servicio diferencial y generando retornos a nuestros inversores. <br><br>
-								Fomentamos una cultura de ética, sin egos, sinérgica y profesional; de puertas abiertas, creativa y de 
-								pensamientos distintos; con plena confianza y delegación en nuestra gente; estableciendo relaciones verdaderas y de largo plazo.
+								Through the creation, investment and management of these companies, we seek to provide added value and continue to transform the industries to which we belong,
+								improving the customer experience, giving them a differential service and generating returns for our investors. <br><br>
+								We promote a culture of ethics, without egos, synergistic and professional; open-door, creative and
+								different thoughts; with full confidence and delegation in our people; establishing true and long-term relationships.
 							</p>
 						</div>
 					</div>
@@ -72,51 +70,48 @@
 			</div>
 		</section>
 
-		<section id="serie"><!--seccion de tarjetas-->
+		<section id="serie">
 			<div class="contenedor">
-				<h2>Serie <span class="color-acento">Realestate</span></h2> <!--Titulo de la seccion de tarjetas -->
-					<div class="datos_empresa"> <!--Este div permite darle estilo al sub menu-->
-						<div class="submenu"><!--tarjeta 1-->
-							<h3>Viviendas</h3> <!-- Tarjeta viviendas-->
-							<p>Un producto único, que busca generar una experiencia diferente en un entorno de disfrute, contención y tranquilidad, 
-								inmerso en la naturaleza. <br>
-								Con unidades que se entregan totalmente decoradas y equipadas, con los más completos amenities y servicios, 
-								y en entornos que invitan a respirar naturaleza, disfrutar es el único resultado posible.
+				<h2>Serie <span class="accent_color">Realestate</span></h2> 
+					<div class="company_data"> 
+						<div class="submenu">
+							<h3>Dwelling</h3> 
+							<p>A unique product that seeks to create a different experience in an environment of enjoyment, support and tranquility,
+								immersed in nature. <br>
+								With units that are delivered fully decorated and equipped, with the most complete amenities and services,
+								and in environments that invite you to breathe nature, enjoyment is the only possible result.
 							</p>
-							<a href="{% url 'mobileViviendas' %}" class="btn btn-light mt-3">+ info</a>
-						</div>
-						<div class="submenu"><!--tarjeta Edificios-->
-							<h3>Edificios</h3>
-							<p>Desarrollamos Edificio residencial Premium exclusivos. Ofrecemos la posibilidad de acceder a unidades en lista cero (al costo): 
-								a precio cerrado, sin ajustes CAC, sin comisiones inmobiliarias. Obra de bajo riesgo constructivo y financiero, con tiempos de obra cortos por 
-								contar con proyecto ya aprobado.
-							</p>
-							<a href="{% url 'mobileEdificios' %}" class="btn btn-light mt-3">+ info</a>
+							<a href="{% url 'mobiledDwelling' %}" class="btn btn-light mt-3">+ info</a>
 						</div>
 						<div class="submenu">
-							<h3>Industria</h3><!--tarjeta industrias-->
-							<p>Somos especialistas en inmuebles industriales y contamos con un equipo de profesionales en el desarrollo y planificación de locaciones industriales
-								Aplicamos tecnologías de última generación, para cumplir con lo más alto estándares en seguridad y cuidado del medio ambiente. 
-			
+							<h3>Buildings</h3>
+							<p>We develop exclusive Premium residential buildings. We offer the possibility of accessing units in zero list (at cost):
+								at a fixed price, without CAC adjustments, without real estate commissions. Work with low construction and financial risk, with short construction times due to
+								having an already approved project.
 							</p>
-							<a href="{% url 'mobileIndustrias' %}" class="btn btn-light mt-3">+ info</a>
+							<a href="{% url 'mobileBuildings' %}" class="btn btn-light mt-3">+ info</a>
+						</div>
+						<div class="submenu">
+							<h3>Industries</h3>
+							<p>We are specialists in industrial properties and we have a team of professionals in the development and planning of industrial locations.
+								We apply cutting-edge technologies to meet the highest standards in safety and environmental care.
+							</p>
+							<a href="{% url 'mobileIndustries' %}" class="btn btn-light mt-3">+ info</a>
 						</div>
 					</div>
 			</div>
 		</section>
 
-		<section id="contacto" class="py-5">
+		<section id="contact" class="py-5">
 			<div class="container">
 				<div class="row">
-					<!-- Formulario a la izquierda -->
 
 					<div class="col-md-6">
-						<form id="form-contacto" method="post" autocomplete="on">
-							<h2>Contacto</h2>
+						<form id="form-contact" method="post" autocomplete="on">
+							<h2>Contact</h2>
 							{% csrf_token %}
-							{{ miformulario.non_field_errors }}
-							<!-- Recorrido por cada campo del formulario -->
-							{% for field in miformulario %}
+							{{ myform.non_field_errors }}
+							{% for field in myform %}
 								<div class="mb-3">
 									<label for="{{ field.id_for_label }}" class="form-label">{{ field.label }}</label>
 									{{ field }}
@@ -129,54 +124,51 @@
 							{% endfor %}
 
 							<div class="d-flex align-items-center">
-								<button id="btn-enviar" type="submit" class="btn btn-primary">Enviar</button>
-								<button id="btn-cancelar" type="reset" class="btn btn-secondary ms-2">Cancelar</button>
+								<button id="btn-enviar" type="submit" class="btn btn-primary">Send</button>
+								<button id="btn-cancelar" type="reset" class="btn btn-secondary ms-2">Cancel</button>
 							</div>
 						</form>
 					</div>
-					<!-- Imagen a la derecha -->
+
 					<div class="col-md-6 d-flex justify-content-center align-items-center">
-						<img src="static/img/contacto.jpg" alt="Imagen de contacto" class="img-fluid">
+						<img src="static/img/contact.jpg" alt="Imagen de contacto" class="img-fluid">
 					</div>
 				</div>
 			</div>
 		</section>
 
-		<!-- Modal de carga -->
 		<div class="modal fade" id="loadingModal" tabindex="-1" aria-labelledby="loadingModalLabel" aria-hidden="true">
 			<div class="modal-dialog modal-dialog-centered">
 				<div class="modal-content" style="background-color: transparent; border: none;">
 					<div class="modal-body d-flex justify-content-center align-items-center" style="height: 100px;">
-						<div class="spinner-border" role="status"> <!-- Cambia el color aquí -->
+						<div class="spinner-border" role="status"> 
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
 
-		<!-- Modal de mensaje enviado -->
 		<div class="modal fade" id="mensajeModal" tabindex="-1" aria-labelledby="mensajeModalLabel" aria-hidden="true">
-			<div class="modal-dialog modal-dialog-centered"> <!-- Centrado verticalmente -->
+			<div class="modal-dialog modal-dialog-centered"> 
 				<div class="modal-content">
 					<div class="modal-header d-flex justify-content-center">
-						<h5 class="modal-title" id="mensajeModalLabel">Mensaje Enviado</h5>
+						<h5 class="modal-title" id="mensajeModalLabel">Message Sent</h5>
 					</div>
 					<div class="modal-body d-flex justify-content-center">
-						Su mensaje ha sido enviado exitosamente.
+						Your message has been sent successfully.
 					</div>
-					<div class="modal-footer d-flex justify-content-center"> <!-- Botón centrado -->
+					<div class="modal-footer d-flex justify-content-center">
 						<button type="button" class="btn btn-primary" data-bs-dismiss="modal" aria-label="Close">Ok</button>
 					</div>
 				</div>
 			</div>
 		</div>
 		
-		<section id="ubicacion"> <!-- Seccion de Iframe Google Maps-->
+		<section id="location">
 			<div class="container">
-				<h2>Ubicacion</h2> <!-- TiTulo-->
+				<h2>Location</h2> 
 				<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d817.8500541816977!2d-57.953874576704685!3d-34.921498429018776!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95a2e62e3fc93575%3A0x6ffaec3bf616e000!2sPlaza%20Moreno!5e0!3m2!1ses-419!2sar!4v1695515733925!5m2!1ses-419!2sar" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
 			</div>
-		</section> <!-- Mapa -->
+		</section> 
 
-
-		{% endblock %}
+{% endblock %}

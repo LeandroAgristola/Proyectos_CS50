@@ -40,8 +40,8 @@ def home(request):
         'myform': contact_Form
     })
 
-def mobileHousing(request):
-    return render(request, 'realestate/mobileHousing.html')
+def mobiledDwelling(request):
+    return render(request, 'realestate/mobiledDwelling.html')
 
 def mobileBuildings(request):
     return render(request, 'realestateapp/mobileBuildings.html')
