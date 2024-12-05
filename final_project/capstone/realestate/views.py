@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.http import JsonResponse
-from .forms import contactForm
 from django.core.mail import EmailMessage
+from .forms import contactForm
 from .models import development
 
 def home(request):
@@ -39,6 +39,11 @@ def home(request):
         'development': developments, 
         'myform': contact_Form
     })
+
+def simulate_form_submission(request):
+    if request.method == "POST":
+        return JsonResponse({'status': 'simulated', 'message': 'Form submitted successfully!'}, status=200)
+    return JsonResponse({'status': 'error', 'message': 'Invalid request method'}, status=400)
 
 def mobiledDwelling(request):
     return render(request, 'realestate/mobiledDwelling.html')

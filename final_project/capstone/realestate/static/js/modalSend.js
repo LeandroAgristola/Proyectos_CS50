@@ -5,16 +5,14 @@ document.addEventListener('DOMContentLoaded', function() {
 
     if (form) {
         form.addEventListener('submit', function(event) {
-            event.preventDefault(); // Evitar el envío del formulario por defecto
+            event.preventDefault();
 
             var formData = new FormData(form);
 
-            // Limpiar mensajes de error anteriores
             document.querySelectorAll('.alert.alert-danger').forEach(function(element) {
                 element.remove();
             });
 
-            // Mostrar modal de carga
             loadingModal.show();
 
             fetch(window.location.href, {
@@ -27,19 +25,14 @@ document.addEventListener('DOMContentLoaded', function() {
             })
             .then(response => response.json())
             .then(data => {
-                // Ocultar modal de carga
                 loadingModal.hide();
 
-                if (data.status === 'ok') {
-                    // Mostrar modal de mensaje enviado
+                if (data.status === 'ok' || data.status === 'simulated') {
                     mensajeModal.show();
-
-                    // Limpiar el formulario después de enviar
                     form.reset();
                 } else if (data.status === 'invalid') {
                     console.log('Errores de validación:', data.errors);
-                    
-                    // Mostrar errores en el formulario
+
                     var errors = JSON.parse(data.errors);
                     for (var field in errors) {
                         var errorMessages = errors[field];
@@ -57,9 +50,9 @@ document.addEventListener('DOMContentLoaded', function() {
                 }
             })
             .catch(error => {
-                // Ocultar modal de carga en caso de error
                 loadingModal.hide();
                 console.error('Error al enviar el formulario:', error);
+                alert('Hubo un problema al enviar el formulario. Por favor, inténtalo nuevamente.');
             });
         });
     }
