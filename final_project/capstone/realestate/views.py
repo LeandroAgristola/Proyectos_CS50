@@ -8,19 +8,19 @@ def home(request):
     developments = development.objects.all()
 
     if request.method == "POST":
-        contact_Form = contactForm(data=request.POST)
-        if contact_Form.is_valid():
-            name = contact_Form.cleaned_data['name']
-            lastname = contact_Form.cleaned_data['apellido']
-            phonenumber = contact_Form.cleaned_data['phonenumber']
-            email = contact_Form.cleaned_data['email']
-            consultation = contact_Form.cleaned_data['onsultation']
+        forms_contact = contactForm(data=request.POST)
+        if forms_contact.is_valid():
+            name = forms_contact.cleaned_data['name']
+            lastname = forms_contact.cleaned_data['lastname']
+            phonenumber = forms_contact.cleaned_data['phonenumber']
+            email = forms_contact.cleaned_data['email']
+            consultation = forms_contact.cleaned_data['consultation']
 
             email_message = EmailMessage(
-                "Message from Django App Real Estate",
+                "Message from Real Estate",
                 f"Name: {name} {lastname}\nPhonenumber: {phonenumber}\nEmail: {email}\nConsultation: {consultation}",
-                "", 
-                [""], 
+                "#",  
+                ["#"],  
                 reply_to=[email]
             )
 
@@ -31,20 +31,15 @@ def home(request):
                 print(f"Error sending email: {e}")
                 return JsonResponse({'status': 'error', 'message': str(e)}, status=500)
         else:
-            errores = contact_Form.errors.as_json()
+            errores = forms_contact.errors.as_json()
             return JsonResponse({'status': 'invalid', 'errors': errores}, status=400)
     
-    contact_Form = contactForm()
+    forms_contact = contactForm()
     return render(request, 'realestate/home.html', {
         'development': developments, 
-        'myform': contact_Form
+        'myform': forms_contact
     })
-
-def simulate_form_submission(request):
-    if request.method == "POST":
-        return JsonResponse({'status': 'simulated', 'message': 'Form submitted successfully!'}, status=200)
-    return JsonResponse({'status': 'error', 'message': 'Invalid request method'}, status=400)
-
+        
 def mobiledDwelling(request):
     return render(request, 'realestate/mobiledDwelling.html')
 

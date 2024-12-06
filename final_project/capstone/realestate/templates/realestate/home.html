@@ -107,7 +107,7 @@
 				<div class="row">
 
 					<div class="col-md-6">
-						<form id="form-contact" method="post" action="{% url 'contact_view' %}" autocomplete="off">
+						<form id="contactForm" method="post" utocomplete="off">
 							<h2>Contact</h2>
 							{% csrf_token %}
 							{{ myform.non_field_errors }}
@@ -124,8 +124,8 @@
 							{% endfor %}
 
 							<div class="d-flex align-items-center">
-								<button id="btn-enviar" type="submit" class="btn btn-primary">Send</button>
-								<button id="btn-cancelar" type="reset" class="btn btn-secondary ms-2">Cancel</button>
+								<button id="btn-send" type="submit" class="btn btn-primary">Send</button>
+								<button id="btn-cancel" type="reset" class="btn btn-secondary ms-2">Cancel</button>
 							</div>
 						</form>
 					</div>
@@ -148,7 +148,7 @@
 			</div>
 		</div>
 
-		<div class="modal fade" id="mensajeModal" tabindex="-1" aria-labelledby="mensajeModalLabel" aria-hidden="true">
+		<div class="modal fade" id="msjModal" tabindex="-1" aria-labelledby="msjModalLabel" aria-hidden="true">
 			<div class="modal-dialog modal-dialog-centered"> 
 				<div class="modal-content">
 					<div class="modal-header d-flex justify-content-center">

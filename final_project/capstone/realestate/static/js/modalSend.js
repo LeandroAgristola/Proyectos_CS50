@@ -1,11 +1,11 @@
 document.addEventListener('DOMContentLoaded', function() {
-    var form = document.getElementById('form-contacto');
+    var form = document.getElementById('contactForm');
     var loadingModal = new bootstrap.Modal(document.getElementById('loadingModal'));
-    var mensajeModal = new bootstrap.Modal(document.getElementById('mensajeModal'));
+    var msjModal = new bootstrap.Modal(document.getElementById('msjModal'));
 
     if (form) {
         form.addEventListener('submit', function(event) {
-            event.preventDefault();
+            event.preventDefault(); 
 
             var formData = new FormData(form);
 
@@ -27,12 +27,13 @@ document.addEventListener('DOMContentLoaded', function() {
             .then(data => {
                 loadingModal.hide();
 
-                if (data.status === 'ok' || data.status === 'simulated') {
-                    mensajeModal.show();
+                if (data.status === 'ok') {
+                    msjModal.show();
+
                     form.reset();
                 } else if (data.status === 'invalid') {
-                    console.log('Errores de validación:', data.errors);
-
+                    console.log('Validation errors:', data.errors);
+                    
                     var errors = JSON.parse(data.errors);
                     for (var field in errors) {
                         var errorMessages = errors[field];
@@ -51,8 +52,7 @@ document.addEventListener('DOMContentLoaded', function() {
             })
             .catch(error => {
                 loadingModal.hide();
-                console.error('Error al enviar el formulario:', error);
-                alert('Hubo un problema al enviar el formulario. Por favor, inténtalo nuevamente.');
+                console.error('Error sending form:', error);
             });
         });
     }

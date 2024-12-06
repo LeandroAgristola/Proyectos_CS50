@@ -1,19 +1,27 @@
 from django import forms
 from django.core.exceptions import ValidationError
+from django.core.validators import EmailValidator
 import re
-
 
 def validateOnlyLetters(value):
     if not value.isalpha():
-        raise ValidationError('This field must only contain letters.')
+        raise ValidationError('This field must contain only letters.')
 
-def validateOnlyLetters(value):
+def validateOnlynumbers(value):
     if not re.match(r'^\d+$', value):
-        raise ValidationError('The phone number should only contain numbers.')
+        raise ValidationError('The phone number must contain only numbers.')
+
+def validateOnlyemail(value):
+  try:
+      validate = EmailValidator()
+      validate(value)
+  except ValidationError:
+      raise ValidationError('Please enter a valid email.')  
+  return True 
 
 class contactForm(forms.Form):
     name = forms.CharField(
-        max_length=100, 
+        max_length=100,
         validators=[validateOnlyLetters],  
         widget=forms.TextInput(attrs={
             'class': 'form-control',
@@ -21,7 +29,7 @@ class contactForm(forms.Form):
         })
     )
     lastname = forms.CharField(
-        max_length=100, 
+        max_length=100,
         validators=[validateOnlyLetters], 
         widget=forms.TextInput(attrs={
             'class': 'form-control',
@@ -30,13 +38,14 @@ class contactForm(forms.Form):
     )
     phonenumber = forms.CharField(
         max_length=20,
-        validators=[validateOnlyLetters],  
+        validators=[validateOnlynumbers],  
         widget=forms.TextInput(attrs={
             'class': 'form-control',
             'placeholder': '0115345456'
         })
     )
     email = forms.EmailField(
+        validators=[validateOnlyemail], 
         widget=forms.EmailInput(attrs={
             'class': 'form-control',
             'placeholder': 'example@djangomail.com'
