@@ -31,8 +31,8 @@ def home(request):
                 print(f"Error sending email: {e}")
                 return JsonResponse({'status': 'error', 'message': str(e)}, status=500)
         else:
-            errores = forms_contact.errors.as_json()
-            return JsonResponse({'status': 'invalid', 'errors': errores}, status=400)
+            errors = forms_contact.errors.as_json()
+            return JsonResponse({'status': 'invalid', 'errors': errors}, status=400)
     
     forms_contact = contactForm()
     return render(request, 'realestate/home.html', {

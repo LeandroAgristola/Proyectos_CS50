@@ -13,8 +13,6 @@ document.addEventListener('DOMContentLoaded', function() {
                 element.remove();
             });
 
-            loadingModal.show();
-
             fetch(window.location.href, {
                 method: 'POST',
                 body: formData,
@@ -25,12 +23,13 @@ document.addEventListener('DOMContentLoaded', function() {
             })
             .then(response => response.json())
             .then(data => {
-                loadingModal.hide();
-
                 if (data.status === 'ok') {
-                    msjModal.show();
-
-                    form.reset();
+                    loadingModal.show();
+                    setTimeout(() => {
+                        loadingModal.hide();
+                        msjModal.show();
+                        form.reset();
+                    }, 1000);
                 } else if (data.status === 'invalid') {
                     console.log('Validation errors:', data.errors);
                     
@@ -40,7 +39,7 @@ document.addEventListener('DOMContentLoaded', function() {
                         var fieldElement = document.querySelector('[name=' + field + ']');
                         if (fieldElement) {
                             var errorElement = document.createElement('div');
-                            errorElement.className = 'alert alert-danger';
+                            errorElement.className = 'alert alert-danger mt-2';
                             errorMessages.forEach(function(error) {
                                 var errorText = document.createTextNode(error.message);
                                 errorElement.appendChild(errorText);
@@ -51,7 +50,6 @@ document.addEventListener('DOMContentLoaded', function() {
                 }
             })
             .catch(error => {
-                loadingModal.hide();
                 console.error('Error sending form:', error);
             });
         });

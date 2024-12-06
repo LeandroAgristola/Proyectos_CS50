@@ -321,19 +321,19 @@ section {
     color: rgb(89, 89, 247); 
 }
 
-#mensajeModal .modal-header, 
-#mensajeModal .modal-body, 
-#mensajeModal .modal-footer {
+#msjModal .modal-header, 
+#msjModal .modal-body, 
+#msjModal .modal-footer {
     text-align: center;
 }
 
-#mensajeModal .modal-footer .btn {
+#msjModal .modal-footer .btn {
     background-color: rgb(48, 48, 119);
     border-color: rgb(48, 48, 119);
     width: 100px; 
 }
 
-#mensajeModal .modal-footer .btn:hover {
+#msjModal .modal-footer .btn:hover {
     background-color: rgb(89, 89, 247);
     border-color: rgb(89, 89, 247);
 }

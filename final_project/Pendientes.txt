@@ -1,5 +1,4 @@
 Funcionalidad:
-Crear simulacion de envio de contacto
 Crear template de ingreso de desarrollos y usar imagen S1
 Agregar comentarios a los archivos
 
