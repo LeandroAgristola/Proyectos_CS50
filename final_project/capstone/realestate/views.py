@@ -1,7 +1,7 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import JsonResponse
 from django.core.mail import EmailMessage
-from .forms import contactForm
+from .forms import contactForm, DevelopmentForm
 from .models import development
 
 def home(request):
@@ -39,6 +39,16 @@ def home(request):
         'development': developments, 
         'myform': forms_contact
     })
+
+def admin_development_view(request):
+    if request.method == 'POST':
+        form = DevelopmentForm(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()
+            return redirect('home')  # Redirige a la página principal tras guardar.
+    else:
+        form = DevelopmentForm()
+    return render(request, 'realestate/management.html', {'form': form})
         
 def mobiledDwelling(request):
     return render(request, 'realestate/mobiledDwelling.html')

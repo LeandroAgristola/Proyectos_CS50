@@ -1,6 +1,7 @@
 from django import forms
 from django.core.exceptions import ValidationError
 from django.core.validators import EmailValidator
+from .models import development
 import re
 
 def validateOnlyLetters(value):
@@ -58,3 +59,8 @@ class contactForm(forms.Form):
             'placeholder': 'Write your query here'
         })
     )
+
+class DevelopmentForm(forms.ModelForm):
+    class Meta:
+        model = development
+        fields = ['title', 'content', 'image', 'brochurePaper']
