@@ -9,6 +9,7 @@ urlpatterns = [
     path("logout", views.logout_view, name="logout"),
     path('management/', views.management, name='management'),
     path('management/add/', views.add_development_view, name='add_development'),
+     path('management/edit/<int:dev_id>/', views.edit_development, name='edit_development'),
     path('mobiledDwelling/', views.mobiledDwelling, name='mobiledDwelling'),
     path('mobileBuildings/', views.mobileBuildings, name='mobileBuildings'),
     path('mobileIndustries/', views.mobileIndustries, name='mobileIndustries'),

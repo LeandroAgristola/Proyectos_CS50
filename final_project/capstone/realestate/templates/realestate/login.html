@@ -1,28 +1,54 @@
-{% extends "realestate/layout_development.html" %}
-{% block body %}
-<div class="container d-flex flex-column justify-content-center align-items-center vh-100">
-    <div class="login-card p-4 rounded shadow">
-        <div class="d-flex align-items-center justify-content-center gap-2 mb-4">
+
+<!DOCTYPE html>
+<html lang="es-ES"> 
+<head> 
+	{% load static %}
+	<meta charset="utf-8"> 
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="description" content=""> 
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> 
+	<link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet"> 
+
+	{% block css %}
+	<link rel="stylesheet" type="text/css" href="{% static 'vendor/bootstrap/css/bootstrap.css' %}">  
+	<link rel="stylesheet" type="text/css" href="{% static 'css/styleManagement.css' %}">  
+	{% endblock %}
+
+	<link rel="icon" type="image/x-icon" href="{% static 'logo/favicon.ico' %}">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" 
+	integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" 
+	crossorigin="anonymous" referrerpolicy="no-referrer" /> 
+	<title>{% block title %}Realestate{% endblock %}</title>
+</head>
+	<body>
+        <div class="container d-flex flex-column justify-content-center align-items-center vh-100">
+            <div class="login-card p-4 rounded shadow">
+                <div class="d-flex align-items-center justify-content-center gap-2 mb-4">
+                    <img src="{% static 'logo/logo.png' %}" alt="logo" class="logo-img me-2" style="max-width: 200px;">
+                    <div>
+                    <h1 class="text-center">Realestate</h1>
+                    <h4 class="text-center">Management</h4>
+                    </div>
+                </div>
+                {% if message %}
+                    <div class="alert alert-danger">{{ message }}</div>
+                {% endif %}
+
+                <form action="{% url 'login' %}" method="post" class="w-100">
+                    {% csrf_token %}
+                    <div class="form-group mb-3">
+                        <input autofocus class="form-control" type="text" name="username" placeholder="Username">
+                    </div>
+                    <div class="form-group mb-3">
+                        <input class="form-control" type="password" name="password" placeholder="Password">
+                    </div>
+                    <input class="btn btn-primary w-100" type="submit" value="Login">
+                </form>
+            </div>
         </div>
-        <h4 class="text-center mb-3">Login</h4>
-
-        {% if message %}
-            <div>{{ message }}</div>
-        {% endif %}
-
-        <form action="{% url 'login' %}" method="post" class="w-100">
-            {% csrf_token %}
-            <div class="form-group mb-3">
-                <input autofocus class="form-control form-control-sm" type="text" name="username" placeholder="Username">
-            </div>
-            <div class="form-group mb-3">
-                <input class="form-control form-control-sm" type="password" name="password" placeholder="Password">
-            </div>
-            <input class="btn btn-primary w-100" type="submit" value="Login">
-        </form>
-        <p class="text-center mt-3">
-            Don't have an account? <a href="{% url 'register' %}">Register here.</a>
-        </p>
-    </div>
-</div>
-{% endblock %}
+		{% block scripts %}
+		<script src="{% static 'vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+		{% endblock %}
+	</body>
+</html>

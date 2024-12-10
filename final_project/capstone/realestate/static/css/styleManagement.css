@@ -1,0 +1,97 @@
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Lato', sans-serif;
+    margin: 0;
+}
+
+h1 { font-size: 3em; font-weight: bold; }
+h2 { font-size: 2.5em; font-weight: bold; }
+h3 { font-size: 2em; }
+p { font-size: 1.1em; }
+a {text-decoration: none; } 
+
+.logo-text {
+    color: rgb(48, 48, 119);
+    margin: 0;
+    padding: 25px 0px;
+    font-weight: bold;
+}
+
+.col-md-3 {
+    background-color: white;
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.3);
+}
+
+.nav-link {
+    font-size: 1.2em;
+    padding: 15px 10px;
+    font-weight: bold;
+    color: black;
+    transition: all 0.5s;
+}
+
+.nav-link:hover {
+    color: rgb(89, 89, 247);
+    padding: 15px 15px;
+}
+
+.edit-btn {
+    font-size: 1em;
+    padding: 8px 15px;
+    color: white;
+    border-radius: 5px;
+    background-color: rgb(48, 48, 119);
+    border-color: rgb(48, 48, 119);
+}
+
+.edit-btn:hover {
+    background-color:rgb(89, 89, 247);
+    border-color:rgb(89, 89, 247);
+}
+
+.admin-development-form {
+    background-color: #ffffff;
+    padding: 30px 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.admin-development-form h1 {
+    color: rgb(48, 48, 119);
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+}
+
+.admin-development-form label {
+    font-weight: bold;
+}
+
+.admin-development-form .form-control:focus {
+    border-color: rgb(48, 48, 119) !important;
+    box-shadow: 0 0 0 0.2rem rgba(48, 48, 119, 0.25) !important;
+}
+
+.admin-development-form textarea {
+    resize: vertical;
+    min-height: 200px;
+}
+
+.admin-development-form .btn {
+    width: 120px;
+    font-size: 1em;
+    background-color: rgb(48, 48, 119);
+    border-color: rgb(48, 48, 119);
+    margin: 10px 5px;
+}
+
+.admin-development-form .btn:hover {
+    background-color: rgb(89, 89, 247);
+    border-color: rgb(89, 89, 247);
+}

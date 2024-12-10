@@ -1,12 +1,4 @@
 Funcionalidad:
-Crear template de ingreso de desarrollos y usar imagen S1
-    -Agregar un menu especifico para esta vista solo dejando home
-    -Agregar un nuevo Css que sea especifico para esta vista
-    -linkear los archivos de estilo
-    -agregar logaut en el menu de management
-    -agregar login en el menu de management
-    -agregar el formulario especifico para login de management
-    
 Agregar comentarios a los archivos
 
 Diseño:

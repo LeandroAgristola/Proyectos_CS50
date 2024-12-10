@@ -72,6 +72,20 @@ def add_development_view(request):
         form = DevelopmentForm()
     return render(request, 'realestate/add_development.html', {'form': form})
 
+@login_required(login_url='login')
+def edit_development(request, dev_id):
+    dev = get_object_or_404(development, id=dev_id)
+
+    if request.method == 'POST':
+        form = DevelopmentForm(request.POST, request.FILES, instance=dev)
+        if form.is_valid():
+            form.save()
+            return redirect('management')
+    else:
+        form = DevelopmentForm(instance=dev)
+
+    return render(request, 'realestate/edit_development.html', {'form': form, 'development': dev})
+
 def login_view(request):
     if request.method == "POST":
         username = request.POST["username"]
@@ -90,7 +104,7 @@ def login_view(request):
 
 def logout_view(request):
     logout(request)
-    return HttpResponseRedirect(reverse("realestate/home.html"))
+    return HttpResponseRedirect(reverse("home"))
         
 def mobiledDwelling(request):
     return render(request, 'realestate/mobiledDwelling.html')
