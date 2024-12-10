@@ -128,8 +128,8 @@ section {
 
 #hero .card {
     border-radius: 10px;
-    height: 450px;
-    max-width: 450px; 
+    height: 500px;
+    max-width: 500px; 
     background: rgba(0, 0, 0, 0.700);
     color: white;
     background-position: center;
@@ -139,7 +139,7 @@ section {
 }
 
 #hero .card-img-top {
-    height: 150px;
+    height: 200px;
     object-fit: cover;
 }
 
@@ -516,8 +516,6 @@ footer .text-end {
 }
 
 
-
-
 @media (max-width: 768px) {
 
     .container{
@@ -560,19 +558,85 @@ footer .text-end {
     
     }
 
+    .navbar-nav.ms-auto {
+        margin-left: 0 !important; 
+        justify-content: center;
+    }
+
+    .collapse {
+        display: none;
+        align-items: center; 
+        justify-content: center; 
+        border-radius: 5px;
+       
+    }
+
+    .collapse.active {
+        display: flex;
+        flex-direction: column;
+        align-items: center; 
+        justify-content: center; 
+        background: #ffffff;
+        padding: 10px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+    
+    .navbar-toggler {
+        background: none;
+        border: none;
+        padding: 0;
+        outline: none;
+        cursor: pointer;
+        flex-direction: column;
+        width: 30px;
+        height: 24px;
+        margin: auto; 
+    }
+    
     .navbar-toggler-icon {
-        background-image: url("\static\logo\menu-bar.png.png");
-        height: 35px;
-        width: 35px;
-        border-radius: 15%;
-
+        position: relative;
+        display: block;
+        background-color: #000000;
+        height: 5px;
+        width: 100%;
+        border-radius: 2px;
+        transition: all 0.3s ease;
     }
-
-    .navbar-toggler-icon:hover {
-        background-color: gray;
-
+    
+    .navbar-toggler-icon::before,
+    .navbar-toggler-icon::after {
+        content: '';
+        position: absolute;
+        left: 0;
+        width: 100%;
+        height: 5px;
+        background-color: #000000;
+        border-radius: 2px;
+        transition: all 0.3s ease;
     }
-
+    
+    .navbar-toggler-icon::before {
+        top: -10px;
+    }
+    
+    .navbar-toggler-icon::after {
+        top: 10px;
+    }
+    
+    .navbar-toggler.active .navbar-toggler-icon {
+        background-color: transparent;
+    }
+    
+    .navbar-toggler.active .navbar-toggler-icon::before {
+        transform: rotate(45deg);
+        top: 0;
+    }
+    
+    .navbar-toggler.active .navbar-toggler-icon::after {
+        transform: rotate(-45deg);
+        top: 0;
+    }
+    
     /* Seccion Hero*/
 
     #hero h1 {    
@@ -613,7 +677,7 @@ footer .text-end {
         text-align: center;
     }
 
-    #Company #myVideo{
+    #company #myVideo{
         display: none;
     }
 

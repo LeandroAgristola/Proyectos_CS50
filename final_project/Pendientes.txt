@@ -2,13 +2,9 @@ Funcionalidad:
 Agregar comentarios a los archivos
 
 Diseño:
-Ajustar menu de hamburgueza que no se ve correctamente
-
 
 Template de administracion:
   
-
-.\venv\Scripts\Activate.ps1
 
 Bien continuando con el proyecto final de Programación web de CS50 con Python y JavaScript de havard academy, el cual me aporta todos los archivos para iniciar, el instructor me informa esto :
 

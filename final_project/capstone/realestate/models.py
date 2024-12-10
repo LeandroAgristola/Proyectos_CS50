@@ -3,7 +3,7 @@ import os
 
 class development(models.Model):
     title = models.CharField(max_length=50)
-    content = models.CharField(max_length=150)
+    content = models.CharField(max_length=200)
     image = models.ImageField(upload_to='developments')  
     brochurePaper = models.FileField(upload_to='developments_pdfs/')
     created = models.DateTimeField(auto_now_add=True)  

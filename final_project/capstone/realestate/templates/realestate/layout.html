@@ -8,7 +8,7 @@
 		<meta name="description" content="We are experts in real estate development, with more than 20 years of experience in the market"> 
 		<link rel="preconnect" href="https://fonts.googleapis.com">
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> 
-		<link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet"> 
+		<link rel="preload" href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet"> 
 
 		{% block css %}
 		<link rel="stylesheet" type="text/css" href="{% static 'vendor/bootstrap/css/bootstrap.css' %}">  
@@ -34,7 +34,7 @@
 					</div>
 					<div class="col-md-9">
 						<nav class="navbar navbar-expand-md navbar-dark">
-							<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menu" aria-controls="menu" aria-expanded="false" aria-label="Toggle navigation">
+							<button class="navbar-toggler" type="button" aria-controls="menu" aria-expanded="false" aria-label="Toggle navigation">
 								<span class="navbar-toggler-icon"></span>
 							</button>
 							<div class="collapse navbar-collapse" id="menu">
@@ -81,7 +81,7 @@
 						</div>
 						<div class="d-flex align-items-center">
 							<i class="fa-solid fa-envelope me-2"></i>
-							<a href="mailto:consultas@realestate.com" target="_blank">consultas@realestate.com</a>
+							<a href="mailto:consultas@realestate.com" target="_blank">consultations@realestate.com</a>
 						</div>
 						<div class="d-flex align-items-center">
 							<i class="fa-solid fa-location-dot me-2"></i>
@@ -98,16 +98,26 @@
 
 		{% block scripts %}
 		<script>
-			document.addEventListener('DOMContentLoaded', function () {
-			  const navLinks = document.querySelectorAll('.navbar-nav .nav-link');
+			document.addEventListener("DOMContentLoaded", () => {
+				const toggler = document.querySelector(".navbar-toggler");
+				const menu = document.querySelector("#menu");
 
-			  navLinks.forEach(link => {
-				link.addEventListener('click', () => {
-				  const navbarCollapse = document.getElementById('menu');
-				  const bsCollapse = new bootstrap.Collapse(navbarCollapse, { toggle: false });
-				  bsCollapse.hide();
-				});
-			  });
+				if (toggler && menu) {
+					toggler.addEventListener("click", () => {
+						toggler.classList.toggle("active");
+						menu.classList.toggle("active");
+					});
+
+					const navLinks = document.querySelectorAll(".navbar-nav .nav-link");
+					navLinks.forEach(link => {
+						link.addEventListener("click", () => {
+							menu.classList.remove("active");
+							toggler.classList.remove("active");
+							const bsCollapse = new bootstrap.Collapse(menu, { toggle: false });
+							bsCollapse.hide();
+						});
+					});
+				}
 			});
 		</script>
 		<script src="{% static 'vendor/bootstrap/js/bootstrap.bundle.min.js' %}" type="text/javascript"></script>
