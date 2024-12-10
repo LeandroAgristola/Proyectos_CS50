@@ -64,3 +64,21 @@ class DevelopmentForm(forms.ModelForm):
     class Meta:
         model = development
         fields = ['title', 'content', 'image', 'brochurePaper']
+
+        widgets = {
+            'title': forms.TextInput(attrs={
+                'class': 'form-control',
+                'placeholder': 'Enter the title'
+            }),
+            'content': forms.Textarea(attrs={
+                'class': 'form-control',
+                'placeholder': 'Enter the content',
+                'rows': 6
+            }),
+            'image': forms.FileInput(attrs={
+                'class': 'form-control'
+            }),
+            'brochurePaper': forms.FileInput(attrs={
+                'class': 'form-control'
+            })
+        }

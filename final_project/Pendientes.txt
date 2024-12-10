@@ -2,10 +2,6 @@ Funcionalidad:
 Agregar comentarios a los archivos
 
 Diseño:
-Ajugar formulario de login
-Ajustar fondo Usar la imagen S1 como fondo
-Ajustar menu especifico 
-Ajustar formulario 
 Ajustar menu de hamburgueza que no se ve correctamente
 
 

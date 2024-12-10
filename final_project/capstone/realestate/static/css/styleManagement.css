@@ -56,42 +56,70 @@ a {text-decoration: none; }
     border-color:rgb(89, 89, 247);
 }
 
-.admin-development-form {
-    background-color: #ffffff;
-    padding: 30px 20px;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+.card {
+    border-radius: 12px;
 }
 
-.admin-development-form h1 {
-    color: rgb(48, 48, 119);
-    font-size: 1.8rem;
-    margin-bottom: 20px;
+.card-body {
+    padding: 2rem;
 }
 
-.admin-development-form label {
-    font-weight: bold;
-}
-
-.admin-development-form .form-control:focus {
-    border-color: rgb(48, 48, 119) !important;
-    box-shadow: 0 0 0 0.2rem rgba(48, 48, 119, 0.25) !important;
-}
-
-.admin-development-form textarea {
+textarea {
     resize: vertical;
     min-height: 200px;
 }
 
-.admin-development-form .btn {
+#development-form {
+    background-color: #ffffff;
+    padding: 15px;
+    border-radius: 8px; 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+#development-form .form-control {
+    border-color: #ddd;
+    border-radius: 5px;
+}
+
+#development-form .form-control:focus {
+    border-color: rgb(48, 48, 119) !important;
+    box-shadow: 0 0 0 0.2rem rgba(48, 48, 119, 0.25) !important;
+}
+
+#development-form label {
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 5px;
+    display: block;
+    text-align: left;
+}
+
+#development-form .btn {
     width: 120px;
     font-size: 1em;
     background-color: rgb(48, 48, 119);
     border-color: rgb(48, 48, 119);
+    color: #fff;
     margin: 10px 5px;
 }
 
-.admin-development-form .btn:hover {
+#development-form .btn:hover {
     background-color: rgb(89, 89, 247);
     border-color: rgb(89, 89, 247);
+    color: #fff;
+}
+
+#development-form .text-center {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+.login-page {
+    background-image: linear-gradient(0deg, rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('/static/img/management.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 100vh;
+    margin: 0;
 }
