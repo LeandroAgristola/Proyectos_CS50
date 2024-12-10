@@ -1,12 +1,37 @@
-{% extends "realestate/layout.html" %}
+{% extends "realestate/layout_development.html" %}
 
 {% block content %}
 <div class="container mt-5">
-    <h1>Cargar Desarrollo Inmobiliario</h1>
-    <form method="post" enctype="multipart/form-data" action="">
+    <h1>Management - Desarrollos Inmobiliarios</h1>
+
+    <form method="post" action="{% url 'management' %}">
         {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit" class="btn btn-primary">Guardar</button>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Seleccionar</th>
+                    <th>Título</th>
+                    <th>Contenido</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for dev in developments %}
+                <tr>
+                    <td>
+                        <input type="checkbox" name="development_ids" value="{{ dev.id }}">
+                    </td>
+                    <td>{{ dev.title }}</td>
+                    <td>{{ dev.content }}</td>
+                </tr>
+                {% empty %}
+                <tr>
+                    <td colspan="3">No hay desarrollos disponibles.</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+        <button type="submit" name="delete" class="btn btn-danger">Eliminar seleccionados</button>
     </form>
 </div>
 {% endblock %}

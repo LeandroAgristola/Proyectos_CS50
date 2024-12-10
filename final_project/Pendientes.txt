@@ -1,9 +1,6 @@
 Funcionalidad:
 Crear template de ingreso de desarrollos y usar imagen S1
-    -Agregar listados de desarrollos
-    -Agregar la Funcionalidad de eliminar desarrollos desde esa vista
     -Agregar un menu especifico para esta vista solo dejando home
-    -Usar la imagen S1 como fondo
     -Agregar un nuevo Css que sea especifico para esta vista
     -linkear los archivos de estilo
     -agregar logaut en el menu de management
@@ -13,9 +10,9 @@ Crear template de ingreso de desarrollos y usar imagen S1
 Agregar comentarios a los archivos
 
 Diseño:
-
-Ajustar fondo 
-Ajustar menu especifico
+Ajugar formulario de login
+Ajustar fondo Usar la imagen S1 como fondo
+Ajustar menu especifico 
 Ajustar formulario 
 Ajustar menu de hamburgueza que no se ve correctamente
 
