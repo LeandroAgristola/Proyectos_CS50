@@ -158,12 +158,10 @@ CSRF_COOKIE_HTTPONLY = False
 
 EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
 
+#This section of the code is commented because it is for future configurations.
+
 #EMAIL_HOST = ''
 #EMAIL_USE_TLS = True  
 #EMAIL_PORT = 587  
 #EMAIL_HOST_USER='' 
 #EMAIL_HOST_PASSWORD='' 
-
-
-#LOGIN_URL = '/authentication/logear/' 
-#LOGIN_REDIRECT_URL = 'home' 
