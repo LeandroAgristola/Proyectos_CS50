@@ -110,7 +110,7 @@ def mobiledDwelling(request):
     return render(request, 'realestate/mobiledDwelling.html')
 
 def mobileBuildings(request):
-    return render(request, 'realestateapp/mobileBuildings.html')
+    return render(request, 'realestate/mobileBuildings.html')
 
 def mobileIndustries(request):
-    return render(request, 'realestateapp/mobileIndustries.html')
+    return render(request, 'realestate/mobileIndustries.html')

@@ -153,8 +153,8 @@ CSRF_TRUSTED_ORIGINS = [
     'http://localhost:8000',
 
 ]
-
-CSRF_COOKIE_SECURE = True
+CSRF_COOKIE_SECURE = False 
+CSRF_COOKIE_HTTPONLY = False
 
 EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
 
